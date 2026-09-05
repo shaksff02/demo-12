@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSA — Shift Roster</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMmRkNGE3Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNWFhN2YwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjM1IiByPSIxOCIgZmlsbD0iI2ZmZiIvPjxsaW5lIHgxPSIzMiIgeTE9IjM1IiB4Mj0iMzIiIHkyPSIyNCIgc3Ryb2tlPSIjMWQ5ZDc4IiBzdHJva2Utd2lkdGg9IjMuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGxpbmUgeDE9IjMyIiB5MT0iMzUiIHgyPSI0MCIgeTI9IjM1IiBzdHJva2U9IiMxZDlkNzgiIHN0cm9rZS13aWR0aD0iMy4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjM1IiByPSIyLjQiIGZpbGw9IiMxZDlkNzgiLz48L3N2Zz4=">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ================= DESIGN TOKENS ================= */
+    :root{
+      --bg:#0b0e14; --surface:#151a24; --surface2:#1a2030; --surface-hi:#202738;
+      --line:#252c3d; --line-hi:#313a50;
+      --ink:#eef1f7; --muted:#8b93a7; --faint:#5b6376;
+      --eu:#2dd4a7; --eu-dim:rgba(45,212,167,.12);
+      --glo:#f0b95a; --glo-dim:rgba(240,185,90,.12);
+      --udp:#b58cf0; --udp-dim:rgba(181,140,240,.12);
+      --info:#5aa7f0; --info-dim:rgba(90,167,240,.12);
+      --danger:#f06565; --danger-dim:rgba(240,101,101,.12);
+      --grad:linear-gradient(135deg,#2dd4a7,#5aa7f0);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --shadow-sm:0 4px 14px rgba(0,0,0,.25);
+      --radius:16px;
+      --font-display:'Sora',sans-serif;
+      --font-body:'Inter',sans-serif;
+    }
+    html[data-theme="light"]{
+      --bg:#f3f5f9; --surface:#ffffff; --surface2:#f7f9fc; --surface-hi:#eef2f8;
+      --line:#e2e7ef; --line-hi:#cfd6e2;
+      --ink:#1a2030; --muted:#5b6376; --faint:#9aa3b5;
+      --eu:#0d9d78; --eu-dim:rgba(13,157,120,.1);
+      --glo:#b07d13; --glo-dim:rgba(176,125,19,.1);
+      --udp:#7d54c9; --udp-dim:rgba(125,84,201,.1);
+      --info:#2b7fe0; --info-dim:rgba(43,127,224,.1);
+      --danger:#d94141; --danger-dim:rgba(217,65,65,.1);
+      --grad:linear-gradient(135deg,#0d9d78,#2b7fe0);
+      --shadow:0 10px 30px rgba(30,40,70,.08);
+      --shadow-sm:0 4px 14px rgba(30,40,70,.06);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:var(--font-body); -webkit-font-smoothing:antialiased;
+      min-height:100vh; overflow-x:hidden;
+      transition:background .3s, color .3s;
+    }
+    body::before{
+      content:''; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(600px 400px at 15% -5%, var(--eu-dim), transparent 70%),
+        radial-gradient(700px 500px at 90% 10%, var(--info-dim), transparent 70%);
+    }
+    .wrap{max-width:1280px; margin:0 auto; padding:32px 24px 80px}
+
+    /* ================= HEADER ================= */
+    header.top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; flex-wrap:wrap; margin-bottom:26px;
+    }
+    .brand{display:flex; align-items:center; gap:14px}
+    .brand .logo{
+      width:46px; height:46px; border-radius:14px; background:var(--grad);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:var(--shadow-sm);
+    }
+    .brand h1{
+      font-family:var(--font-display); font-size:24px; font-weight:800; margin:0;
+      letter-spacing:-.5px;
+      background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .brand .sub{font-size:12px; color:var(--muted); margin-top:2px}
+    .head-right{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .live-clock{
+      font-family:var(--font-display); font-weight:700; font-size:15px;
+      background:var(--surface); border:1px solid var(--line);
+      padding:9px 16px; border-radius:12px; box-shadow:var(--shadow-sm);
+      font-variant-numeric:tabular-nums;
+    }
+    .live-clock small{color:var(--faint); font-weight:600; margin-left:6px; font-size:11px}
+    .icon-btn{
+      width:42px; height:42px; border-radius:12px; background:var(--surface);
+      border:1px solid var(--line); color:var(--muted); cursor:pointer;
+      display:flex; align-items:center; justify-content:center; font-size:18px;
+      transition:all .2s ease;
+    }
+    .icon-btn:hover{border-color:var(--eu); color:var(--eu); transform:translateY(-2px)}
+    .updated{
+      font-size:11.5px; color:var(--faint); display:flex; align-items:center; gap:6px;
+      width:100%; order:3;
+    }
+    .updated .dot{width:7px; height:7px; border-radius:50%; background:var(--eu); animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1; box-shadow:0 0 0 0 var(--eu-dim)}50%{opacity:.5; box-shadow:0 0 0 6px transparent}}
+
+    /* ================= TABS ================= */
+    .view-nav{
+      display:flex; gap:6px; margin-bottom:28px;
+      background:var(--surface); border:1px solid var(--line);
+      padding:6px; border-radius:16px; box-shadow:var(--shadow-sm);
+      width:fit-content; max-width:100%; overflow-x:auto;
+    }
+    .nav-btn{
+      background:transparent; border:none; padding:11px 20px;
+      font-size:13.5px; font-weight:600; color:var(--muted); cursor:pointer;
+      border-radius:11px; transition:all .2s ease; white-space:nowrap;
+      display:flex; align-items:center; gap:8px;
+    }
+    .nav-btn:hover{color:var(--ink); background:var(--surface-hi)}
+    .nav-btn.active{color:#fff; background:var(--grad); box-shadow:var(--shadow-sm)}
+
+    /* ================= DATE STRIP ================= */
+    .date-nav{
+      display:flex; gap:10px; margin-bottom:26px; overflow-x:auto;
+      padding:2px 2px 10px; scrollbar-width:none;
+      scroll-snap-type:x proximity;
+    }
+    .date-nav::-webkit-scrollbar{display:none}
+    .date-btn{
+      flex:0 0 auto; scroll-snap-align:center;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+      min-width:62px; background:var(--surface); border:1px solid var(--line);
+      color:var(--muted); padding:10px 14px; border-radius:14px; cursor:pointer;
+      transition:all .2s ease; box-shadow:var(--shadow-sm);
+    }
+    .date-btn .m{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--faint)}
+    .date-btn .d{font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--ink); line-height:1}
+    .date-btn .w{font-size:10.5px; font-weight:500; color:var(--faint)}
+    .date-btn:hover{border-color:var(--eu); transform:translateY(-3px)}
+    .date-btn:hover .m,.date-btn:hover .d,.date-btn:hover .w{color:var(--eu)}
+    .date-btn.today::after{
+      content:''; width:5px; height:5px; border-radius:50%; background:var(--info); margin-top:2px;
+    }
+    .date-btn.active{background:var(--grad); border-color:transparent; transform:translateY(-2px)}
+    .date-btn.active .m,.date-btn.active .d,.date-btn.active .w{color:#fff}
+    .date-btn.active.today::after{background:#fff}
+
+    /* ================= HERO ================= */
+    .hero-date{
+      font-family:var(--font-display); font-size:30px; font-weight:800;
+      letter-spacing:-.5px; margin-bottom:6px;
+      animation:fadeUp .5s ease;
+    }
+    .hero-sub{font-size:14px; color:var(--muted); margin-bottom:30px}
+
+    /* ================= STAT CHIPS ================= */
+    .stat-row{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:16px; margin-bottom:34px;
+    }
+    .stat-chip{
+      background:var(--surface); border:1px solid var(--line);
+      border-radius:var(--radius); padding:20px; display:flex;
+      flex-direction:column; gap:6px; box-shadow:var(--shadow-sm);
+      position:relative; overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease;
+      animation:fadeUp .5s ease backwards;
+    }
+    .stat-chip:nth-child(2){animation-delay:.08s}
+    .stat-chip:nth-child(3){animation-delay:.16s}
+    .stat-chip:hover{transform:translateY(-4px); box-shadow:var(--shadow)}
+    .stat-chip::before{
+      content:''; position:absolute; top:0; left:0; bottom:0; width:4px;
+    }
+    .stat-chip.eu::before{background:var(--eu)}
+    .stat-chip.glo::before{background:var(--glo)}
+    .stat-chip.udp::before{background:var(--udp)}
+    .stat-chip .n{font-family:var(--font-display); font-size:34px; font-weight:800; line-height:1}
+    .stat-chip .l{font-size:13px; color:var(--muted); font-weight:500}
+
+    /* ================= SHIFT GROUPS ================= */
+    .shift-group{
+      border:1px solid var(--line); border-radius:var(--radius);
+      background:var(--surface); margin-bottom:20px; overflow:hidden;
+      box-shadow:var(--shadow-sm); animation:fadeUp .5s ease backwards;
+    }
+    .shift-group.off-group{opacity:.75; border-style:dashed}
+    .shift-group-header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:16px 22px; background:var(--surface2); border-bottom:1px solid var(--line);
+    }
+    .shift-group-header .name{
+      font-family:var(--font-display); font-weight:700; font-size:16px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .shift-group-header .name::before{
+      content:''; width:8px; height:8px; border-radius:50%; background:var(--eu);
+      box-shadow:0 0 10px var(--eu);
+    }
+    .shift-group.off-group .shift-group-header .name::before{background:var(--faint); box-shadow:none}
+    .shift-group-header .count{
+      font-size:12px; color:var(--muted); background:var(--surface);
+      border:1px solid var(--line); border-radius:999px; padding:5px 14px; font-weight:600;
+    }
+    .agent-list{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+      gap:1px; background:var(--line);
+    }
+    .agent-row{
+      background:var(--surface); display:flex; align-items:center; gap:14px;
+      padding:15px 22px; font-size:14px; transition:background .15s ease; min-width:0;
+    }
+    .agent-row:hover{background:var(--surface-hi)}
+    .avatar{
+      width:40px; height:40px; border-radius:50%; display:flex;
+      align-items:center; justify-content:center;
+      font-family:var(--font-display); font-weight:700; font-size:13px; flex-shrink:0;
+    }
+    .avatar.eu{background:var(--eu-dim); color:var(--eu)}
+    .avatar.glo{background:var(--glo-dim); color:var(--glo)}
+    .avatar.udp{background:var(--udp-dim); color:var(--udp)}
+    .avatar.other{background:var(--surface-hi); color:var(--muted)}
+    .agent-info{min-width:0; display:flex; flex-direction:column; gap:2px; flex:1}
+    .agent-info .name{font-weight:600; line-height:1.3; word-break:break-word}
+    .agent-info .sysid{
+      color:var(--faint); font-size:12px; white-space:nowrap;
+      overflow:hidden; text-overflow:ellipsis;
+    }
+
+    /* ================= PILLS ================= */
+    .pill{
+      display:inline-block; padding:4px 12px; border-radius:20px;
+      font-size:11.5px; font-weight:700; flex-shrink:0; letter-spacing:.3px;
+    }
+    .pill.eu{background:var(--eu-dim); color:var(--eu)}
+    .pill.glo{background:var(--glo-dim); color:var(--glo)}
+    .pill.udp{background:var(--udp-dim); color:var(--udp)}
+    .pill.other{background:var(--info-dim); color:var(--info)}
+    .pill.off{background:var(--surface-hi); color:var(--muted)}
+
+    /* ================= FILTERS ================= */
+    .filters{
+      display:flex; flex-wrap:wrap; gap:16px; margin-bottom:24px; align-items:flex-end;
+      background:var(--surface); padding:20px; border:1px solid var(--line);
+      border-radius:var(--radius); box-shadow:var(--shadow-sm);
+    }
+    .field{display:flex; flex-direction:column; gap:6px; min-width:150px; flex:1}
+    .field.grow{flex:1 1 220px}
+    .field label{font-size:12px; color:var(--muted); font-weight:600}
+    select, input[type="text"], input[type="date"]{
+      background:var(--surface2); border:1px solid var(--line); color:var(--ink);
+      border-radius:10px; padding:11px 14px; font-size:14px; font-family:var(--font-body);
+      outline:none; transition:all .2s ease; width:100%;
+    }
+    select:focus, input:focus{
+      border-color:var(--eu); box-shadow:0 0 0 3px var(--eu-dim); background:var(--surface);
+    }
+    select{cursor:pointer}
+    input[type="date"]{cursor:pointer; color-scheme:dark}
+    html[data-theme="light"] input[type="date"]{color-scheme:light}
+    .reset-btn{
+      align-self:flex-end; background:var(--surface2); border:1px solid var(--line);
+      color:var(--muted); border-radius:10px; padding:11px 20px; font-size:13px;
+      font-weight:600; cursor:pointer; transition:all .2s ease;
+    }
+    .reset-btn:hover{border-color:var(--danger); color:var(--danger)}
+
+    /* ================= TABLES ================= */
+    .table-header{
+      font-family:var(--font-display); font-size:19px; font-weight:700;
+      margin-bottom:16px; display:flex; align-items:center; gap:10px;
+    }
+    .table-header .badge{
+      font-family:var(--font-body); font-size:12.5px; background:var(--surface);
+      color:var(--muted); padding:4px 12px; border-radius:20px;
+      font-weight:600; border:1px solid var(--line);
+    }
+    .summary{font-size:13px; color:var(--muted); margin-bottom:14px}
+    .summary b{color:var(--ink)}
+    .table-shell{
+      border:1px solid var(--line); border-radius:var(--radius); overflow:auto;
+      background:var(--surface); box-shadow:var(--shadow-sm);
+    }
+    table{width:100%; border-collapse:collapse; font-size:14px; min-width:640px}
+    thead th{
+      position:sticky; top:0; background:var(--surface2); text-align:left;
+      padding:14px 20px; font-weight:700; font-size:11.5px; color:var(--muted);
+      border-bottom:1px solid var(--line); white-space:nowrap;
+      text-transform:uppercase; letter-spacing:.8px;
+      user-select:none; cursor:pointer; transition:color .15s;
+    }
+    thead th:hover{color:var(--eu)}
+    thead th .arrow{font-size:10px; margin-left:4px; opacity:.8}
+    tbody td{
+      padding:13px 20px; border-bottom:1px solid var(--line);
+      white-space:nowrap; color:var(--ink);
+    }
+    tbody tr{transition:background .12s ease}
+    tbody tr:hover{background:var(--surface-hi)}
+    tbody tr:last-child td{border-bottom:none}
+    .off-row td{color:var(--faint)!important}
+
+    /* ================= AGENT STATS ================= */
+    .stats-grid{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:30px;
+    }
+    .stat-card{
+      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+      padding:18px; display:flex; flex-direction:column; gap:4px; box-shadow:var(--shadow-sm);
+      transition:transform .2s ease, box-shadow .2s ease; animation:fadeUp .5s ease backwards;
+    }
+    .stat-card:nth-child(2){animation-delay:.06s}
+    .stat-card:nth-child(3){animation-delay:.12s}
+    .stat-card:nth-child(4){animation-delay:.18s}
+    .stat-card:hover{transform:translateY(-3px); box-shadow:var(--shadow)}
+    .stat-card .label{
+      font-size:11px; color:var(--muted); font-weight:700;
+      text-transform:uppercase; letter-spacing:.8px;
+    }
+    .stat-card .value{font-family:var(--font-display); font-size:26px; font-weight:700; line-height:1.2}
+    .stat-card .sub{font-size:12px; color:var(--faint)}
+    .stat-card.success{border-left:4px solid var(--eu)}
+    .stat-card.neutral{border-left:4px solid var(--udp)}
+    .stat-card.highlight{border-left:4px solid var(--info)}
+    .stat-card.warning{border-left:4px solid var(--glo)}
+
+    /* ================= CHART ================= */
+    .chart-card{
+      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+      padding:20px 22px; box-shadow:var(--shadow-sm); margin-bottom:30px;
+      animation:fadeUp .5s ease;
+    }
+    .chart-card h3{
+      margin:0 0 16px; font-family:var(--font-display); font-size:15px; font-weight:700;
+      color:var(--muted); text-transform:uppercase; letter-spacing:.6px;
+    }
+    .chart-bar{
+      display:flex; align-items:center; gap:12px; margin-bottom:10px;
+    }
+    .chart-bar .cl{
+      font-size:12px; color:var(--muted); font-weight:600; min-width:110px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:right;
+    }
+    .chart-bar .track{flex:1; height:22px; background:var(--surface2); border-radius:6px; overflow:hidden}
+    .chart-bar .fill{
+      height:100%; border-radius:6px; background:var(--grad);
+      width:0; animation:growBar .8s cubic-bezier(.25,.8,.4,1) forwards;
+    }
+    @keyframes growBar{to{width:var(--w)}}
+    .chart-bar .val{font-size:12px; font-weight:700; color:var(--ink); min-width:30px}
+
+    /* ================= STATES / SKELETON / TOAST ================= */
+    .state-msg{
+      padding:56px 20px; text-align:center; color:var(--muted); font-size:15px;
+      background:var(--surface); border:1px dashed var(--line); border-radius:var(--radius);
+    }
+    .state-msg.error{color:var(--danger); border-color:var(--danger)}
+    .skel{
+      background:var(--surface2); border-radius:8px; position:relative; overflow:hidden;
+    }
+    .skel::after{
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+      animation:shimmer 1.4s infinite;
+    }
+    html[data-theme="light"] .skel::after{
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);
+    }
+    @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+    #toastHolder{position:fixed; bottom:24px; right:24px; z-index:999; display:flex; flex-direction:column; gap:10px}
+    .toast{
+      background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--eu);
+      color:var(--ink); padding:13px 18px; border-radius:12px; box-shadow:var(--shadow);
+      font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:10px;
+      animation:toastIn .35s cubic-bezier(.21,1.02,.73,1); max-width:320px;
+    }
+    .toast.err{border-left-color:var(--danger)}
+    .toast.out{animation:toastOut .3s ease forwards}
+    @keyframes toastIn{from{transform:translateX(120%); opacity:0}to{transform:none; opacity:1}}
+    @keyframes toastOut{to{transform:translateX(120%); opacity:0}}
+
+    @keyframes fadeUp{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
+    .fade-in{animation:fadeUp .4s ease}
+
+    footer.note{
+      margin-top:48px; font-size:12px; color:var(--faint);
+      line-height:1.6; text-align:center;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width:640px){
+      .wrap{padding:20px 14px 60px}
+      .brand h1{font-size:20px}
+      .live-clock{font-size:13px; padding:7px 12px}
+      .date-btn{min-width:54px; padding:9px 12px}
+      .hero-date{font-size:23px}
+      .filters{display:grid; grid-template-columns:1fr; gap:14px; padding:16px}
+      .field{min-width:100%}
+      .reset-btn{width:100%}
+      .stats-grid{grid-template-columns:repeat(2,1fr); gap:10px}
+      .stat-card .value{font-size:21px}
+      .stat-card .sub{display:none}
+      .agent-list{grid-template-columns:1fr}
+      #schedTableShell{border:none; box-shadow:none; background:transparent; overflow:visible}
+      #schedTable{min-width:0}
+      #schedTable thead{display:none}
+      #schedTable tbody{display:block}
+      #schedTable tr{
+        display:grid; grid-template-columns:1fr auto;
+        grid-template-areas:"agent region" "date shift" "sysid sysid";
+        row-gap:6px; column-gap:12px; align-items:center;
+        background:var(--surface); border:1px solid var(--line);
+        border-radius:var(--radius); padding:14px 16px; margin-bottom:10px;
+      }
+      #schedTable td{display:block; padding:0; border:none; white-space:normal}
+      #schedTable td:nth-child(1){grid-area:date; font-size:12.5px; font-weight:600; color:var(--muted)}
+      #schedTable td:nth-child(2){grid-area:shift; font-size:12.5px; color:var(--muted); text-align:right}
+      #schedTable td:nth-child(3){
+        grid-area:sysid; font-size:12px; color:var(--faint);
+        padding-top:8px; border-top:1px dashed var(--line);
+      }
+      #schedTable td:nth-child(4){grid-area:agent; font-family:var(--font-display); font-size:15px; font-weight:700}
+      #schedTable td:nth-child(5){grid-area:region; justify-self:end}
+      .chart-bar .cl{min-width:80px; font-size:11px}
+      #toastHolder{left:14px; right:14px; bottom:14px}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+        </svg>
+      </div>
+      <div>
+        <h1>CSA Shift Roster</h1>
+        <div class="sub">Live duty schedule dashboard</div>
+      </div>
+    </div>
+    <div class="head-right">
+      <div class="live-clock" id="liveClock">--:--<small>--</small></div>
+      <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+    <div class="updated" id="updatedAt"><span class="dot"></span>Connecting…</div>
+  </header>
+
+  <nav class="view-nav">
+    <button class="nav-btn active" data-view="todayView">📋 Today's Schedule</button>
+    <button class="nav-btn" data-view="detailsView">🗂️ All Entries</button>
+    <button class="nav-btn" data-view="agentView">👤 Agent History</button>
+  </nav>
+
+  <!-- ========== TODAY VIEW ========== -->
+  <div id="todayView">
+    <div class="date-nav" id="dateNav"></div>
+    <div class="hero-date" id="heroDate"></div>
+    <div class="hero-sub">Duty schedule for agents assigned on the selected date.</div>
+    <div class="stat-row" id="statRow">
+      <div class="stat-chip eu"><span class="n skel" style="width:60px;height:34px;display:inline-block">&nbsp;</span><span class="l">&nbsp;</span></div>
+      <div class="stat-chip glo"><span class="n skel" style="width:60px;height:34px;display:inline-block">&nbsp;</span><span class="l">&nbsp;</span></div>
+      <div class="stat-chip udp"><span class="n skel" style="width:60px;height:34px;display:inline-block">&nbsp;</span><span class="l">&nbsp;</span></div>
+    </div>
+    <div id="groupsHolder"></div>
+    <div class="state-msg" id="stateMsgToday">Loading schedule…</div>
+  </div>
+
+  <!-- ========== DETAILS VIEW ========== -->
+  <div id="detailsView" style="display:none;">
+    <div class="filters">
+      <div class="field"><label for="fMonth">Month</label><select id="fMonth"><option value="">All</option></select></div>
+      <div class="field"><label for="fRegion">Region</label><select id="fRegion"><option value="">All</option></select></div>
+      <div class="field"><label for="fShift">Shift</label><select id="fShift"><option value="">All</option></select></div>
+      <div class="field grow"><label for="fAgent">Search Agent / System ID</label><input type="text" id="fAgent" placeholder="e.g. Milon Hossain"></div>
+      <button class="reset-btn" id="clearBtn">Reset</button>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div class="table-shell" id="schedTableShell">
+      <table id="schedTable" style="display:none">
+        <thead><tr>
+          <th data-col="sortKey">Date <span class="arrow"></span></th>
+          <th data-col="shift">Shift <span class="arrow"></span></th>
+          <th data-col="systemId">System ID <span class="arrow"></span></th>
+          <th data-col="agentName">Agent <span class="arrow"></span></th>
+          <th data-col="region">Region <span class="arrow"></span></th>
+        </tr></thead>
+        <tbody id="tbodyDetails"></tbody>
+      </table>
+      <div class="state-msg" id="stateMsgDetails">Loading…</div>
+    </div>
+  </div>
+
+  <!-- ========== AGENT VIEW ========== -->
+  <div id="agentView" style="display:none;">
+    <div class="filters">
+      <div class="field grow"><label for="agentSelect">Select Agent</label><select id="agentSelect"><option value="">Loading agents…</option></select></div>
+      <div class="field"><label for="startDate">Start Date</label><input type="date" id="startDate"></div>
+      <div class="field"><label for="endDate">End Date</label><input type="date" id="endDate"></div>
+      <button class="reset-btn" id="resetBtn">Reset Filters</button>
+    </div>
+
+    <div class="stats-grid" id="statsGrid" style="display:none;">
+      <div class="stat-card success"><span class="label">Total Duty Days</span><span class="value" id="statDutyDays">0</span><span class="sub">Within selected range</span></div>
+      <div class="stat-card neutral"><span class="label">Total Off Days</span><span class="value" id="statOffDays">0</span><span class="sub">Total days minus duty days</span></div>
+      <div class="stat-card highlight"><span class="label">Most Frequent Shift</span><span class="value" id="statTopShift" style="font-size:19px">N/A</span><span class="sub" id="statTopShiftCount">No shifts worked</span></div>
+      <div class="stat-card warning"><span class="label">Regions Worked</span><span class="value" id="statRegions" style="font-size:19px">N/A</span><span class="sub">Active regions</span></div>
+    </div>
+
+    <div class="chart-card" id="chartCard" style="display:none;">
+      <h3>Shift Distribution</h3>
+      <div id="chartHolder"></div>
+    </div>
+
+    <div id="tableSection" style="display:none; margin-top:0;">
+      <div class="table-header">Shift History <span class="badge" id="resultCount">0 entries</span></div>
+      <div class="table-shell">
+        <table id="historyTable">
+          <thead><tr><th>Date</th><th>Day</th><th>Shift</th><th>Region</th><th>System ID</th></tr></thead>
+          <tbody id="tbodyAgent"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="state-msg" id="stateMsgAgent">Please select an agent to view their shift history.</div>
+  </div>
+
+  <footer class="note">
+    No login required — everyone can view this.<br>
+    Data auto-refreshes every 5 minutes. Refresh manually to see the latest Sheet changes.
+  </footer>
+</div>
+<div id="toastHolder"></div>
+
+<script>
+  /* ============ CONFIG ============ */
+  const CONFIG = {
+    SHEET_ID: "1qIhXOv2jU2pQagJbzkYms1vAQ9JPtAhwSNmibGfFZS4",
+    SHEET_NAME: "Schedule",
+    REFRESH_MS: 300000
+  };
+
+  const csvUrl = () =>
+    `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(CONFIG.SHEET_NAME)}&_=${Date.now()}`;
+
+  /* ============ HELPERS (XSS-FIXED) ============ */
+  function esc(s){
+    return String(s ?? '').replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+  }
+
+  function parseCSV(text){
+    const rows = []; let row = [], field = '', inQ = false;
+    for(let i=0;i<text.length;i++){
+      const c = text[i], n = text[i+1];
+      if(inQ){
+        if(c==='"' && n==='"'){ field+='"'; i++; }
+        else if(c==='"'){ inQ=false; }
+        else{ field+=c; }
+      } else {
+        if(c==='"'){ inQ=true; }
+        else if(c===','){ row.push(field); field=''; }
+        else if(c==='\n'){ row.push(field); rows.push(row); row=[]; field=''; }
+        else if(c==='\r'){ /* skip */ }
+        else{ field+=c; }
+      }
+    }
+    if(field.length || row.length){ row.push(field); rows.push(row); }
+    return rows.filter(r => r.some(c => c.trim() !== ''));
+  }
+
+  function normalizeDate(raw){
+    if(!raw) return {sortKey:'', display:'', dayName:'', month:''};
+    raw = raw.trim(); let d;
+    const m = raw.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{2,4})$/);
+    if(m){
+      const mm = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+      const yr = m[3].length===2 ? 2000+parseInt(m[3]) : parseInt(m[3]);
+      d = new Date(yr, mm[m[2]], parseInt(m[1]));
+    } else { d = new Date(raw); }
+    if(isNaN(d)) return {sortKey:raw, display:raw, dayName:'', month:''};
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const dd = String(d.getDate()).padStart(2,'0');
+    return {
+      sortKey: `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${dd}`,
+      display: `${dd} ${months[d.getMonth()]} ${d.getFullYear()}`,
+      dayName: days[d.getDay()],
+      month: `${months[d.getMonth()]} ${d.getFullYear()}`
+    };
+  }
+
+  const keyOf = d =>
+    `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+
+  function regionPillClass(region){
+    const r = (region||'').trim().toUpperCase();
+    if(r==='EU') return 'eu';
+    if(r==='GLO'||r==='GLOBAL') return 'glo';
+    if(r==='UDP') return 'udp';
+    if(r==='OFF') return 'off';
+    return 'other';
+  }
+
+  async function fetchScheduleRows(){
+    const res = await fetch(csvUrl());
+    if(!res.ok) throw new Error('fetch failed');
+    const rows = parseCSV(await res.text());
+    if(rows.length < 2) throw new Error('empty sheet');
+    const header = rows[0].map(h => h.trim().toLowerCase());
+    const idx = {
+      date: header.findIndex(h => h.includes('date')),
+      shift: header.findIndex(h => h.includes('shift')),
+      systemId: header.findIndex(h => h.includes('system')),
+      agentName: header.findIndex(h => h.includes('agent')),
+      region: header.findIndex(h => h.includes('region')),
+    };
+    // Header validation fix
+    if(idx.date===-1 || idx.agentName===-1) throw new Error('Sheet missing required columns (Date / Agent)');
+    return rows.slice(1).map(r => {
+      const di = normalizeDate(r[idx.date] || '');
+      return {
+        sortKey: di.sortKey, display: di.display, dayName: di.dayName, month: di.month,
+        shift: (r[idx.shift]||'').trim(), systemId: (r[idx.systemId]||'').trim(),
+        agentName: (r[idx.agentName]||'').trim(), region: (r[idx.region]||'').trim(),
+      };
+    }).filter(r => r.agentName || r.systemId);
+  }
+
+  /* ============ STATE ============ */
+  let ALL_ROWS = [];
+  let SELECTED_SORT_KEY = keyOf(new Date());
+  let DETAIL_SORT = { col:'sortKey', dir:1 };
+
+  /* ============ TOAST ============ */
+  function toast(msg, isErr=false){
+    const holder = document.getElementById('toastHolder');
+    const t = document.createElement('div');
+    t.className = 'toast' + (isErr ? ' err' : '');
+    t.innerHTML = `${isErr ? '⚠️' : '✅'} ${esc(msg)}`;
+    holder.appendChild(t);
+    setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 350); }, 3800);
+  }
+
+  /* ============ THEME ============ */
+  const themeBtn = document.getElementById('themeBtn');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    themeBtn.textContent = t === 'dark' ? '🌙' : '☀️';
+    try{ localStorage.setItem('csa-theme', t); }catch(e){}
+  }
+  let savedTheme = 'dark';
+  try{ savedTheme = localStorage.getItem('csa-theme') || 'dark'; }catch(e){}
+  applyTheme(savedTheme);
+  themeBtn.addEventListener('click', () => {
+    applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* ============ LIVE CLOCK ============ */
+  const clockEl = document.getElementById('liveClock');
+  function tickClock(){
+    const n = new Date();
+    const h = String(n.getHours()).padStart(2,'0');
+    const m = String(n.getMinutes()).padStart(2,'0');
+    const s = String(n.getSeconds()).padStart(2,'0');
+    clockEl.innerHTML = `${h}:${m}<span style="color:var(--eu)">:${s}</span><small>${n.getHours()<12?'AM':'PM'}</small>`;
+  }
+  tickClock(); setInterval(tickClock, 1000);
+
+  /* ============ VIEW SWITCHER ============ */
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const t = btn.getAttribute('data-view');
+      ['todayView','detailsView','agentView'].forEach(id =>
+        document.getElementById(id).style.display = (id===t ? 'block' : 'none')
+      );
+      document.getElementById(t).classList.add('fade-in');
+      setTimeout(() => document.getElementById(t).classList.remove('fade-in'), 500);
+    });
+  });
+
+  /* ============ TODAY VIEW ============ */
+  const monthsEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const weekdaysEn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const monthsShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const daysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function renderDateNav(){
+    const today = new Date(), dates = [];
+    for(let i=-7;i<=14;i++){ const d = new Date(today); d.setDate(today.getDate()+i); dates.push(d); }
+    const el = document.getElementById('dateNav');
+    el.innerHTML = dates.map(d => {
+      const k = keyOf(d);
+      return `<button class="date-btn ${k===SELECTED_SORT_KEY?'active':''} ${k===keyOf(today)?'today':''}" data-key="${k}">
+        <span class="m">${monthsShort[d.getMonth()]}</span>
+        <span class="d">${d.getDate()}</span>
+        <span class="w">${daysShort[d.getDay()]}</span>
+      </button>`;
+    }).join('');
+    el.querySelectorAll('.date-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        SELECTED_SORT_KEY = btn.dataset.key;
+        renderDateNav(); renderTodayView();
+      });
+    });
+    const a = el.querySelector('.date-btn.active');
+    if(a) a.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  }
+
+  function renderHeroDate(){
+    const d = new Date(SELECTED_SORT_KEY + 'T00:00:00');
+    if(isNaN(d)) return;
+    document.getElementById('heroDate').textContent =
+      `${weekdaysEn[d.getDay()]}, ${d.getDate()} ${monthsEn[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  function renderStats(rows){
+    const c = {eu:0, glo:0, udp:0};
+    rows.forEach(r => {
+      if(/^off$/i.test(r.shift)) return;
+      const cls = regionPillClass(r.region);
+      if(c[cls] !== undefined) c[cls]++;
+    });
+    document.getElementById('statRow').innerHTML = `
+      <div class="stat-chip eu"><span class="n" data-count="${c.eu}">0</span><span class="l">On duty in EU</span></div>
+      <div class="stat-chip glo"><span class="n" data-count="${c.glo}">0</span><span class="l">On duty in GLO</span></div>
+      <div class="stat-chip udp"><span class="n" data-count="${c.udp}">0</span><span class="l">On duty in UDP</span></div>`;
+    // Animated counters
+    document.querySelectorAll('#statRow .n').forEach(el => {
+      const target = parseInt(el.dataset.count)||0;
+      let cur = 0; const steps = 20, inc = target/steps;
+      const iv = setInterval(() => {
+        cur += inc;
+        if(cur >= target){ cur = target; clearInterval(iv); }
+        el.textContent = Math.round(cur);
+      }, 25);
+    });
+  }
+
+  function renderGroups(rows){
+    const holder = document.getElementById('groupsHolder');
+    const msg = document.getElementById('stateMsgToday');
+    if(rows.length === 0){
+      holder.innerHTML = '';
+      msg.style.display = 'block';
+      msg.textContent = 'No schedule entries found for this date.';
+      return;
+    }
+    msg.style.display = 'none';
+    const groups = {};
+    rows.forEach(r => {
+      const k = r.shift.trim() || '(Shift not filled)';
+      (groups[k] = groups[k] || []).push(r);
+    });
+    const keys = Object.keys(groups).sort((a,b) => {
+      const ao = /^off$/i.test(a), bo = /^off$/i.test(b);
+      if(ao && !bo) return 1; if(bo && !ao) return -1;
+      return a.localeCompare(b);
+    });
+    holder.innerHTML = keys.map((key,i) => {
+      const isOff = /^off$/i.test(key);
+      const rs = groups[key].sort((a,b) => a.agentName.localeCompare(b.agentName));
+      return `
+      <div class="shift-group ${isOff?'off-group':''}" style="animation-delay:${i*0.06}s">
+        <div class="shift-group-header">
+          <span class="name">${esc(key)}</span>
+          <span class="count">${rs.length} agent${rs.length!==1?'s':''}</span>
+        </div>
+        <div class="agent-list">
+          ${rs.map(r => {
+            const hasName = r.agentName && r.agentName.toUpperCase() !== 'N/A';
+            const dn = hasName ? r.agentName : r.systemId;
+            const showId = r.systemId && r.systemId !== dn && r.systemId.toUpperCase() !== 'N/A';
+            const ini = esc(dn.trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase());
+            const cls = regionPillClass(r.region);
+            return `<div class="agent-row">
+              <span class="avatar ${cls}">${ini}</span>
+              <span class="agent-info">
+                <span class="name">${esc(dn)}</span>
+                ${showId ? `<span class="sysid">ID: ${esc(r.systemId)}</span>` : ''}
+              </span>
+              <span class="pill ${cls}">${esc(r.region)}</span>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderTodayView(){
+    renderHeroDate();
+    const rows = ALL_ROWS.filter(r => r.sortKey === SELECTED_SORT_KEY);
+    renderStats(rows);
+    renderGroups(rows);
+  }
+
+  /* ============ DETAILS VIEW ============ */
+  function populateSelect(id, values){
+    const el = document.getElementById(id);
+    const cur = el.value;
+    el.innerHTML = '<option value="">All</option>' +
+      values.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
+    if(values.includes(cur)) el.value = cur;
+  }
+
+  function renderDetails(){
+    const month = document.getElementById('fMonth').value;
+    const region = document.getElementById('fRegion').value;
+    const shift = document.getElementById('fShift').value;
+    const q = document.getElementById('fAgent').value.trim().toLowerCase();
+
+    let rows = ALL_ROWS.filter(r => {
+      if(month && r.month !== month) return false;
+      if(region && r.region !== region) return false;
+      if(shift && r.shift !== shift) return false;
+      if(q && !(r.agentName.toLowerCase().includes(q) || r.systemId.toLowerCase().includes(q))) return false;
+      return true;
+    });
+
+    // Sortable columns
+    const c = DETAIL_SORT.col, dir = DETAIL_SORT.dir;
+    rows.sort((a,b) => (a[c]||'').localeCompare(b[c]||'') * dir);
+
+    const tbody = document.getElementById('tbodyDetails');
+    const table = document.getElementById('schedTable');
+    const msg = document.getElementById('stateMsgDetails');
+
+    if(rows.length === 0){
+      table.style.display = 'none';
+      msg.style.display = 'block';
+      msg.textContent = 'No data found — try changing the filters.';
+    } else {
+      table.style.display = 'table';
+      msg.style.display = 'none';
+      tbody.innerHTML = rows.map(r => {
+        const isOff = /^off$/i.test(r.shift);
+        return `<tr class="${isOff?'off-row':''}">
+          <td>${esc(r.display)}</td>
+          <td>${isOff ? '<span class="pill off">OFF</span>' : esc(r.shift)}</td>
+          <td>${esc(r.systemId)}</td>
+          <td>${esc(r.agentName)}</td>
+          <td><span class="pill ${regionPillClass(r.region)}">${esc(r.region)}</span></td>
+        </tr>`;
+      }).join('');
+    }
+
+    document.getElementById('summary').innerHTML =
+      `Showing <b>${rows.length}</b> entries${q ? ` for "${esc(document.getElementById('fAgent').value.trim())}"` : ''}`;
+  }
+
+  // Sort handlers
+  document.querySelectorAll('#schedTable thead th').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      if(DETAIL_SORT.col === col) DETAIL_SORT.dir *= -1;
+      else { DETAIL_SORT.col = col; DETAIL_SORT.dir = 1; }
+      document.querySelectorAll('#schedTable thead th .arrow').forEach(a => a.textContent = '');
+      th.querySelector('.arrow').textContent = DETAIL_SORT.dir === 1 ? '▲' : '▼';
+      renderDetails();
+    });
+  });
+
+  /* ============ AGENT VIEW ============ */
+  function populateAgents(preserve){
+    const select = document.getElementById('agentSelect');
+    const cur = preserve ? select.value : '';
+    const names = [...new Set(ALL_ROWS.map(r => r.agentName))].filter(Boolean).sort();
+    select.innerHTML = '<option value="">— Select Agent —</option>' +
+      names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+    if(names.includes(cur)) select.value = cur;
+  }
+
+  function fmtDate(d){
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+
+  function setDefaultDates(){
+    const today = new Date();
+    let y = today.getFullYear(), m = today.getMonth();
+    if(today.getDate() < 16){ m -= 1; if(m < 0){ m = 11; y -= 1; } }
+    document.getElementById('startDate').value = fmtDate(new Date(y, m, 15));
+    document.getElementById('endDate').value = fmtDate(today);
+  }
+
+  function renderChart(shiftCounts){
+    const holder = document.getElementById('chartCard');
+    const entries = Object.entries(shiftCounts).sort((a,b) => b[1]-a[1]).slice(0,8);
+    if(entries.length === 0){ holder.style.display = 'none'; return; }
+    const max = entries[0][1];
+    document.getElementById('chartHolder').innerHTML = entries.map(([s,n],i) => `
+      <div class="chart-bar">
+        <span class="cl">${esc(s)}</span>
+        <span class="track"><span class="fill" style="--w:${Math.max(4,(n/max)*100)}%; animation-delay:${i*0.08}s"></span></span>
+        <span class="val">${n}</span>
+      </div>`).join('');
+    holder.style.display = 'block';
+  }
+
+  function renderHistory(){
+    const agent = document.getElementById('agentSelect').value;
+    const startStr = document.getElementById('startDate').value;
+    const endStr = document.getElementById('endDate').value;
+    const statsGrid = document.getElementById('statsGrid');
+    const tableSection = document.getElementById('tableSection');
+    const msg = document.getElementById('stateMsgAgent');
+
+    if(!agent){
+      statsGrid.style.display = 'none';
+      tableSection.style.display = 'none';
+      document.getElementById('chartCard').style.display = 'none';
+      msg.style.display = 'block';
+      msg.classList.remove('error');
+      msg.textContent = 'Please select an agent to view their shift history.';
+      return;
+    }
+
+    const filtered = ALL_ROWS.filter(r =>
+      r.agentName === agent &&
+      (!startStr || r.sortKey >= startStr) &&
+      (!endStr || r.sortKey <= endStr)
+    );
+
+    // Map lookup (performance fix)
+    const rowMap = new Map(filtered.map(r => [r.sortKey, r]));
+
+    let dutyDays = 0;
+    const shiftCounts = {};
+    const regions = new Set();
+    filtered.forEach(r => {
+      if(!/^off$/i.test(r.shift)){
+        dutyDays++;
+        shiftCounts[r.shift] = (shiftCounts[r.shift]||0)+1;
+        if(r.region) regions.add(r.region);
+      }
+    });
+
+    // Build full range (DST-safe loop)
+    const start = new Date(startStr + 'T00:00:00');
+    const end = new Date(endStr + 'T00:00:00');
+    const tableRows = [];
+    let totalDays = 0;
+
+    if(isNaN(start) || isNaN(end)){
+      tableRows.push(...filtered);
+      totalDays = filtered.length;
+    } else {
+      let cur = new Date(start);
+      while(cur <= end){
+        totalDays++;
+        const k = keyOf(cur);
+        const found = rowMap.get(k);
+        if(found) tableRows.push(found);
+        else {
+          const dd = String(cur.getDate()).padStart(2,'0');
+          tableRows.push({
+            sortKey:k, display:`${dd} ${monthsShort[cur.getMonth()]} ${cur.getFullYear()}`,
+            dayName:daysShort[cur.getDay()], shift:'OFF', region:'-', systemId:'-'
+          });
+        }
+        cur.setDate(cur.getDate()+1);
+      }
+    }
+
+    let offDays = Math.max(0, totalDays - dutyDays);
+    let topShift = 'N/A', maxCount = 0;
+    for(const s in shiftCounts){
+      if(shiftCounts[s] > maxCount){ maxCount = shiftCounts[s]; topShift = s; }
+    }
+
+    document.getElementById('statDutyDays').textContent = dutyDays;
+    document.getElementById('statOffDays').textContent = offDays;
+    document.getElementById('statTopShift').textContent = topShift;
+    document.getElementById('statTopShiftCount').textContent =
+      maxCount > 0 ? `Worked ${maxCount} times` : 'No shifts worked';
+    document.getElementById('statRegions').textContent =
+      regions.size > 0 ? [...regions].join(', ') : 'None';
+    statsGrid.style.display = 'grid';
+
+    renderChart(shiftCounts);
+
+    if(tableRows.length === 0){
+      statsGrid.style.display = 'none';
+      document.getElementById('chartCard').style.display = 'none';
+      tableSection.style.display = 'none';
+      msg.style.display = 'block';
+      msg.textContent = `No records found for ${agent} in the selected range.`;
+      return;
+    }
+
+    document.getElementById('resultCount').textContent = `${tableRows.length} entries`;
+    document.getElementById('tbodyAgent').innerHTML = tableRows.map(r => {
+      const isOff = /^off$/i.test(r.shift);
+      return `<tr class="${isOff?'off-row':''}">
+        <td>${esc(r.display)}</td>
+        <td style="color:var(--muted); font-weight:500">${esc(r.dayName)}</td>
+        <td><span class="pill ${isOff?'off':regionPillClass(r.region)}">${esc(r.shift)}</span></td>
+        <td>${esc(r.region||'-')}</td>
+        <td style="color:var(--muted)">${esc(r.systemId||'-')}</td>
+      </tr>`;
+    }).join('');
+    tableSection.style.display = 'block';
+    msg.style.display = 'none';
+  }
+
+  /* ============ MAIN LOAD ============ */
+  async function loadAll(){
+    const msgToday = document.getElementById('stateMsgToday');
+    const updEl = document.getElementById('updatedAt');
+    const isFirstLoad = ALL_ROWS.length === 0;
+
+    try{
+      const newRows = await fetchScheduleRows();
+      const changed = isFirstLoad || JSON.stringify(newRows) !== JSON.stringify(ALL_ROWS);
+      ALL_ROWS = newRows;
+
+      renderDateNav();
+      renderTodayView();
+      populateSelect('fMonth', [...new Set(ALL_ROWS.map(r=>r.month))].filter(Boolean));
+      populateSelect('fRegion', [...new Set(ALL_ROWS.map(r=>r.region))].filter(Boolean));
+      populateSelect('fShift', [...new Set(ALL_ROWS.map(r=>r.shift))].filter(Boolean).sort());
+      renderDetails();
+      populateAgents(!isFirstLoad);   // preserve selection on refresh
+      if(isFirstLoad) setDefaultDates();
+      renderHistory();
+
+      updEl.innerHTML = `<span class="dot"></span>Last updated: ${new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}`;
+      msgToday.classList.remove('error');
+      if(!isFirstLoad && changed) toast('Schedule updated with fresh data');
+      else if(!isFirstLoad) toast('Data is up to date');
+    } catch(err){
+      if(ALL_ROWS.length === 0){
+        msgToday.classList.add('error');
+        msgToday.style.display = 'block';
+        document.getElementById('groupsHolder').innerHTML = '';
+        document.getElementById('statRow').innerHTML = '';
+        msgToday.textContent = 'Could not load data. Check that the Sheet sharing is set to "Anyone with the link – Viewer".';
+        updEl.textContent = 'Trouble loading data…';
+      } else {
+        updEl.textContent = 'Last update failed — showing previous data';
+      }
+      if(!isFirstLoad) toast('Refresh failed — showing cached data', true);
+      console.error(err);
+    }
+  }
+
+  /* ============ EVENTS ============ */
+  ['fMonth','fRegion','fShift'].forEach(id =>
+    document.getElementById(id).addEventListener('change', renderDetails));
+  document.getElementById('fAgent').addEventListener('input', renderDetails);
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    ['fMonth','fRegion','fShift','fAgent'].forEach(id => document.getElementById(id).value = '');
+    renderDetails();
+  });
+
+  document.getElementById('agentSelect').addEventListener('change', renderHistory);
+  document.getElementById('startDate').addEventListener('change', renderHistory);
+  document.getElementById('endDate').addEventListener('change', renderHistory);
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    document.getElementById('agentSelect').value = '';
+    setDefaultDates();
+    renderHistory();
+  });
+
+  document.querySelectorAll('input[type="date"]').forEach(input => {
+    input.addEventListener('click', () => {
+      if(typeof input.showPicker === 'function'){
+        try{ input.showPicker(); }catch(e){}
+      }
+    });
+  });
+
+  loadAll();
+  setInterval(loadAll, CONFIG.REFRESH_MS);
+</script>
+</body>
+</html>
