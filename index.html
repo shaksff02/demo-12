@@ -1,211 +1,189 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSA — Shift Roster</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMmRkNGE3Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNWFhN2YwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjM1IiByPSIxOCIgZmlsbD0iI2ZmZiIvPjxsaW5lIHgxPSIzMiIgeTE9IjM1IiB4Mj0iMzIiIHkyPSIyNCIgc3Ryb2tlPSIjMWQ5ZDc4IiBzdHJva2Utd2lkdGg9IjMuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGxpbmUgeDE9IjMyIiB5MT0iMzUiIHgyPSI0MCIgeTI9IjM1IiBzdHJva2U9IiMxZDlkNzgiIHN0cm9rZS13aWR0aD0iMy4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjM1IiByPSIyLjQiIGZpbGw9IiMxZDlkNzgiLz48L3N2Zz4=">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxZTM3NjAiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMzIiByPSIxOCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMzIgMjRWMzNsNSAzIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9nPjwvc3ZnPg==">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
-    /* ================= DESIGN TOKENS ================= */
+    /* ============ PROFESSIONAL TOKENS (LIGHT ONLY) ============ */
     :root{
-      --bg:#0b0e14; --surface:#151a24; --surface2:#1a2030; --surface-hi:#202738;
-      --line:#252c3d; --line-hi:#313a50;
-      --ink:#eef1f7; --muted:#8b93a7; --faint:#5b6376;
-      --eu:#2dd4a7; --eu-dim:rgba(45,212,167,.12);
-      --glo:#f0b95a; --glo-dim:rgba(240,185,90,.12);
-      --udp:#b58cf0; --udp-dim:rgba(181,140,240,.12);
-      --info:#5aa7f0; --info-dim:rgba(90,167,240,.12);
-      --danger:#f06565; --danger-dim:rgba(240,101,101,.12);
-      --grad:linear-gradient(135deg,#2dd4a7,#5aa7f0);
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-      --shadow-sm:0 4px 14px rgba(0,0,0,.25);
-      --radius:16px;
-      --font-display:'Sora',sans-serif;
-      --font-body:'Inter',sans-serif;
-    }
-    html[data-theme="light"]{
-      --bg:#f3f5f9; --surface:#ffffff; --surface2:#f7f9fc; --surface-hi:#eef2f8;
-      --line:#e2e7ef; --line-hi:#cfd6e2;
-      --ink:#1a2030; --muted:#5b6376; --faint:#9aa3b5;
-      --eu:#0d9d78; --eu-dim:rgba(13,157,120,.1);
-      --glo:#b07d13; --glo-dim:rgba(176,125,19,.1);
-      --udp:#7d54c9; --udp-dim:rgba(125,84,201,.1);
-      --info:#2b7fe0; --info-dim:rgba(43,127,224,.1);
-      --danger:#d94141; --danger-dim:rgba(217,65,65,.1);
-      --grad:linear-gradient(135deg,#0d9d78,#2b7fe0);
-      --shadow:0 10px 30px rgba(30,40,70,.08);
-      --shadow-sm:0 4px 14px rgba(30,40,70,.06);
+      --bg:#f4f6f9;
+      --surface:#ffffff;
+      --surface2:#f7f9fb;
+      --surface-hi:#eef2f6;
+      --line:#e3e8ee;
+      --line-hi:#d3dae3;
+      --ink:#1b2733;
+      --muted:#5b6a7b;
+      --faint:#93a1b1;
+
+      --navy:#1e3760;          /* primary — corporate deep blue */
+      --navy-soft:#eaeff7;
+      --accent:#2f6fb5;        /* interactive blue */
+
+      --eu:#1a7f63; --eu-dim:#e3f2ec;
+      --glo:#96690d; --glo-dim:#faf1df;
+      --udp:#6a4d9e; --udp-dim:#efeaf7;
+      --info:#2b6cb0; --info-dim:#e8f0f9;
+      --danger:#c23b3b; --danger-dim:#fbeaea;
+
+      --shadow:0 1px 2px rgba(27,39,51,.05), 0 8px 24px rgba(27,39,51,.07);
+      --shadow-sm:0 1px 2px rgba(27,39,51,.06);
+      --radius:10px;
+      --font-body:'Inter',-apple-system,'Segoe UI',sans-serif;
+      --font-mono:'IBM Plex Mono',ui-monospace,monospace;
     }
 
     *{box-sizing:border-box}
     body{
       margin:0; background:var(--bg); color:var(--ink);
       font-family:var(--font-body); -webkit-font-smoothing:antialiased;
-      min-height:100vh; overflow-x:hidden;
-      transition:background .3s, color .3s;
+      min-height:100vh;
     }
-    body::before{
-      content:''; position:fixed; inset:0; z-index:-1; pointer-events:none;
-      background:
-        radial-gradient(600px 400px at 15% -5%, var(--eu-dim), transparent 70%),
-        radial-gradient(700px 500px at 90% 10%, var(--info-dim), transparent 70%);
-    }
-    .wrap{max-width:1280px; margin:0 auto; padding:32px 24px 80px}
+    .wrap{max-width:1280px; margin:0 auto; padding:28px 24px 80px}
 
-    /* ================= HEADER ================= */
+    /* ============ HEADER ============ */
     header.top{
       display:flex; align-items:center; justify-content:space-between;
-      gap:16px; flex-wrap:wrap; margin-bottom:26px;
+      gap:16px; flex-wrap:wrap; margin-bottom:22px;
+      padding-bottom:18px; border-bottom:1px solid var(--line);
     }
-    .brand{display:flex; align-items:center; gap:14px}
+    .brand{display:flex; align-items:center; gap:13px}
     .brand .logo{
-      width:46px; height:46px; border-radius:14px; background:var(--grad);
+      width:44px; height:44px; border-radius:10px; background:var(--navy);
       display:flex; align-items:center; justify-content:center;
-      box-shadow:var(--shadow-sm);
+      box-shadow:var(--shadow-sm); flex-shrink:0;
     }
     .brand h1{
-      font-family:var(--font-display); font-size:24px; font-weight:800; margin:0;
-      letter-spacing:-.5px;
-      background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+      font-family:var(--font-body); font-size:19px; font-weight:700;
+      margin:0; letter-spacing:-.2px; color:var(--ink);
     }
     .brand .sub{font-size:12px; color:var(--muted); margin-top:2px}
     .head-right{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
-    .live-clock{
-      font-family:var(--font-display); font-weight:700; font-size:15px;
-      background:var(--surface); border:1px solid var(--line);
-      padding:9px 16px; border-radius:12px; box-shadow:var(--shadow-sm);
-      font-variant-numeric:tabular-nums;
-    }
-    .live-clock small{color:var(--faint); font-weight:600; margin-left:6px; font-size:11px}
-    .icon-btn{
-      width:42px; height:42px; border-radius:12px; background:var(--surface);
-      border:1px solid var(--line); color:var(--muted); cursor:pointer;
-      display:flex; align-items:center; justify-content:center; font-size:18px;
-      transition:all .2s ease;
-    }
-    .icon-btn:hover{border-color:var(--eu); color:var(--eu); transform:translateY(-2px)}
-    .updated{
-      font-size:11.5px; color:var(--faint); display:flex; align-items:center; gap:6px;
-      width:100%; order:3;
-    }
-    .updated .dot{width:7px; height:7px; border-radius:50%; background:var(--eu); animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1; box-shadow:0 0 0 0 var(--eu-dim)}50%{opacity:.5; box-shadow:0 0 0 6px transparent}}
 
-    /* ================= TABS ================= */
+    /* 12-hour clock */
+    .live-clock{
+      background:var(--navy); color:#fff; border:none;
+      font-family:var(--font-mono); font-weight:600; font-size:14px;
+      padding:9px 16px; border-radius:8px; box-shadow:var(--shadow-sm);
+      font-variant-numeric:tabular-nums; letter-spacing:.5px;
+      display:flex; align-items:baseline; gap:7px;
+    }
+    .live-clock .ampm{
+      font-family:var(--font-body); font-size:10.5px; font-weight:700;
+      color:#9db8dc; letter-spacing:1px;
+    }
+    .updated{font-size:11.5px; color:var(--faint); display:flex; align-items:center; gap:6px; width:100%; order:3}
+    .updated .dot{width:6px; height:6px; border-radius:50%; background:var(--eu); animation:pulse 2.4s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+    /* ============ TABS ============ */
     .view-nav{
-      display:flex; gap:6px; margin-bottom:28px;
-      background:var(--surface); border:1px solid var(--line);
-      padding:6px; border-radius:16px; box-shadow:var(--shadow-sm);
-      width:fit-content; max-width:100%; overflow-x:auto;
+      display:flex; gap:2px; margin-bottom:26px;
+      border-bottom:1px solid var(--line);
+      overflow-x:auto; width:100%;
     }
     .nav-btn{
-      background:transparent; border:none; padding:11px 20px;
+      background:transparent; border:none; padding:12px 18px;
       font-size:13.5px; font-weight:600; color:var(--muted); cursor:pointer;
-      border-radius:11px; transition:all .2s ease; white-space:nowrap;
-      display:flex; align-items:center; gap:8px;
+      border-bottom:2px solid transparent; margin-bottom:-1px;
+      transition:color .15s, border-color .15s; white-space:nowrap;
     }
-    .nav-btn:hover{color:var(--ink); background:var(--surface-hi)}
-    .nav-btn.active{color:#fff; background:var(--grad); box-shadow:var(--shadow-sm)}
+    .nav-btn:hover{color:var(--ink)}
+    .nav-btn.active{color:var(--navy); border-bottom-color:var(--navy)}
 
-    /* ================= DATE STRIP ================= */
+    /* ============ DATE STRIP ============ */
     .date-nav{
-      display:flex; gap:10px; margin-bottom:26px; overflow-x:auto;
-      padding:2px 2px 10px; scrollbar-width:none;
-      scroll-snap-type:x proximity;
+      display:flex; gap:8px; margin-bottom:24px; overflow-x:auto;
+      padding:2px 2px 8px; scrollbar-width:none; scroll-snap-type:x proximity;
     }
     .date-nav::-webkit-scrollbar{display:none}
     .date-btn{
       flex:0 0 auto; scroll-snap-align:center;
       display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
-      min-width:62px; background:var(--surface); border:1px solid var(--line);
-      color:var(--muted); padding:10px 14px; border-radius:14px; cursor:pointer;
-      transition:all .2s ease; box-shadow:var(--shadow-sm);
+      min-width:60px; background:var(--surface); border:1px solid var(--line);
+      color:var(--muted); padding:10px 13px; border-radius:9px; cursor:pointer;
+      transition:all .15s ease; box-shadow:var(--shadow-sm);
     }
-    .date-btn .m{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--faint)}
-    .date-btn .d{font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--ink); line-height:1}
+    .date-btn .m{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--faint)}
+    .date-btn .d{font-size:18px; font-weight:700; color:var(--ink); line-height:1; font-variant-numeric:tabular-nums}
     .date-btn .w{font-size:10.5px; font-weight:500; color:var(--faint)}
-    .date-btn:hover{border-color:var(--eu); transform:translateY(-3px)}
-    .date-btn:hover .m,.date-btn:hover .d,.date-btn:hover .w{color:var(--eu)}
-    .date-btn.today::after{
-      content:''; width:5px; height:5px; border-radius:50%; background:var(--info); margin-top:2px;
-    }
-    .date-btn.active{background:var(--grad); border-color:transparent; transform:translateY(-2px)}
+    .date-btn:hover{border-color:var(--accent)}
+    .date-btn.today::after{content:''; width:4px; height:4px; border-radius:50%; background:var(--accent); margin-top:2px}
+    .date-btn.active{background:var(--navy); border-color:var(--navy)}
     .date-btn.active .m,.date-btn.active .d,.date-btn.active .w{color:#fff}
     .date-btn.active.today::after{background:#fff}
 
-    /* ================= HERO ================= */
+    /* ============ HERO ============ */
     .hero-date{
-      font-family:var(--font-display); font-size:30px; font-weight:800;
-      letter-spacing:-.5px; margin-bottom:6px;
-      animation:fadeUp .5s ease;
+      font-size:25px; font-weight:700; letter-spacing:-.3px;
+      margin-bottom:5px; color:var(--ink);
     }
-    .hero-sub{font-size:14px; color:var(--muted); margin-bottom:30px}
+    .hero-sub{font-size:13.5px; color:var(--muted); margin-bottom:26px}
 
-    /* ================= STAT CHIPS ================= */
+    /* ============ STAT CHIPS ============ */
     .stat-row{
       display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:16px; margin-bottom:34px;
+      gap:14px; margin-bottom:30px;
     }
     .stat-chip{
       background:var(--surface); border:1px solid var(--line);
-      border-radius:var(--radius); padding:20px; display:flex;
-      flex-direction:column; gap:6px; box-shadow:var(--shadow-sm);
-      position:relative; overflow:hidden;
-      transition:transform .2s ease, box-shadow .2s ease;
-      animation:fadeUp .5s ease backwards;
+      border-radius:var(--radius); padding:18px 20px;
+      box-shadow:var(--shadow-sm); position:relative;
+      transition:box-shadow .2s ease;
     }
-    .stat-chip:nth-child(2){animation-delay:.08s}
-    .stat-chip:nth-child(3){animation-delay:.16s}
-    .stat-chip:hover{transform:translateY(-4px); box-shadow:var(--shadow)}
-    .stat-chip::before{
-      content:''; position:absolute; top:0; left:0; bottom:0; width:4px;
-    }
+    .stat-chip:hover{box-shadow:var(--shadow)}
+    .stat-chip::before{content:''; position:absolute; top:0; left:0; bottom:0; width:3px; border-radius:10px 0 0 10px}
     .stat-chip.eu::before{background:var(--eu)}
     .stat-chip.glo::before{background:var(--glo)}
     .stat-chip.udp::before{background:var(--udp)}
-    .stat-chip .n{font-family:var(--font-display); font-size:34px; font-weight:800; line-height:1}
-    .stat-chip .l{font-size:13px; color:var(--muted); font-weight:500}
+    .stat-chip .n{font-size:30px; font-weight:700; line-height:1; font-variant-numeric:tabular-nums}
+    .stat-chip .l{font-size:12.5px; color:var(--muted); font-weight:500; margin-top:6px; display:block}
 
-    /* ================= SHIFT GROUPS ================= */
+    /* ============ SHIFT GROUPS ============ */
     .shift-group{
       border:1px solid var(--line); border-radius:var(--radius);
-      background:var(--surface); margin-bottom:20px; overflow:hidden;
-      box-shadow:var(--shadow-sm); animation:fadeUp .5s ease backwards;
+      background:var(--surface); margin-bottom:18px; overflow:hidden;
+      box-shadow:var(--shadow-sm);
     }
-    .shift-group.off-group{opacity:.75; border-style:dashed}
+    .shift-group.off-group{opacity:.8; border-style:dashed}
     .shift-group-header{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:16px 22px; background:var(--surface2); border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:15px 20px; background:var(--surface2); border-bottom:1px solid var(--line);
     }
-    .shift-group-header .name{
-      font-family:var(--font-display); font-weight:700; font-size:16px;
-      display:flex; align-items:center; gap:10px;
+    .shift-group-header .name{display:flex; align-items:center; gap:11px; min-width:0}
+
+    /* >>> SHIFT TIME — distinct mono chip <<< */
+    .shift-time{
+      font-family:var(--font-mono); font-weight:600; font-size:13px;
+      color:var(--navy); background:var(--navy-soft);
+      border:1px solid #d7e1ef; border-radius:7px;
+      padding:6px 12px; letter-spacing:.3px; white-space:nowrap;
+      font-variant-numeric:tabular-nums;
     }
-    .shift-group-header .name::before{
-      content:''; width:8px; height:8px; border-radius:50%; background:var(--eu);
-      box-shadow:0 0 10px var(--eu);
-    }
-    .shift-group.off-group .shift-group-header .name::before{background:var(--faint); box-shadow:none}
+    .shift-group.off-group .shift-time{color:var(--muted); background:var(--surface-hi); border-color:var(--line)}
     .shift-group-header .count{
       font-size:12px; color:var(--muted); background:var(--surface);
-      border:1px solid var(--line); border-radius:999px; padding:5px 14px; font-weight:600;
+      border:1px solid var(--line); border-radius:999px; padding:4px 12px; font-weight:600;
+      white-space:nowrap;
     }
     .agent-list{
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
       gap:1px; background:var(--line);
     }
     .agent-row{
-      background:var(--surface); display:flex; align-items:center; gap:14px;
-      padding:15px 22px; font-size:14px; transition:background .15s ease; min-width:0;
+      background:var(--surface); display:flex; align-items:center; gap:13px;
+      padding:14px 20px; font-size:13.5px; transition:background .12s ease; min-width:0;
     }
-    .agent-row:hover{background:var(--surface-hi)}
+    .agent-row:hover{background:var(--surface2)}
     .avatar{
-      width:40px; height:40px; border-radius:50%; display:flex;
+      width:36px; height:36px; border-radius:8px; display:flex;
       align-items:center; justify-content:center;
-      font-family:var(--font-display); font-weight:700; font-size:13px; flex-shrink:0;
+      font-size:12px; font-weight:700; flex-shrink:0;
     }
     .avatar.eu{background:var(--eu-dim); color:var(--eu)}
     .avatar.glo{background:var(--glo-dim); color:var(--glo)}
@@ -214,14 +192,14 @@
     .agent-info{min-width:0; display:flex; flex-direction:column; gap:2px; flex:1}
     .agent-info .name{font-weight:600; line-height:1.3; word-break:break-word}
     .agent-info .sysid{
-      color:var(--faint); font-size:12px; white-space:nowrap;
+      color:var(--faint); font-size:11.5px; white-space:nowrap;
       overflow:hidden; text-overflow:ellipsis;
     }
 
-    /* ================= PILLS ================= */
+    /* ============ PILLS ============ */
     .pill{
-      display:inline-block; padding:4px 12px; border-radius:20px;
-      font-size:11.5px; font-weight:700; flex-shrink:0; letter-spacing:.3px;
+      display:inline-block; padding:3px 11px; border-radius:6px;
+      font-size:11.5px; font-weight:700; flex-shrink:0; letter-spacing:.4px;
     }
     .pill.eu{background:var(--eu-dim); color:var(--eu)}
     .pill.glo{background:var(--glo-dim); color:var(--glo)}
@@ -229,42 +207,38 @@
     .pill.other{background:var(--info-dim); color:var(--info)}
     .pill.off{background:var(--surface-hi); color:var(--muted)}
 
-    /* ================= FILTERS ================= */
+    /* ============ FILTERS ============ */
     .filters{
-      display:flex; flex-wrap:wrap; gap:16px; margin-bottom:24px; align-items:flex-end;
-      background:var(--surface); padding:20px; border:1px solid var(--line);
+      display:flex; flex-wrap:wrap; gap:14px; margin-bottom:22px; align-items:flex-end;
+      background:var(--surface); padding:18px 20px; border:1px solid var(--line);
       border-radius:var(--radius); box-shadow:var(--shadow-sm);
     }
     .field{display:flex; flex-direction:column; gap:6px; min-width:150px; flex:1}
     .field.grow{flex:1 1 220px}
-    .field label{font-size:12px; color:var(--muted); font-weight:600}
+    .field label{font-size:11.5px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.5px}
     select, input[type="text"], input[type="date"]{
-      background:var(--surface2); border:1px solid var(--line); color:var(--ink);
-      border-radius:10px; padding:11px 14px; font-size:14px; font-family:var(--font-body);
-      outline:none; transition:all .2s ease; width:100%;
+      background:var(--surface); border:1px solid var(--line-hi); color:var(--ink);
+      border-radius:8px; padding:10px 13px; font-size:13.5px; font-family:var(--font-body);
+      outline:none; transition:border-color .15s, box-shadow .15s; width:100%;
     }
-    select:focus, input:focus{
-      border-color:var(--eu); box-shadow:0 0 0 3px var(--eu-dim); background:var(--surface);
-    }
+    select:focus, input:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--info-dim)}
     select{cursor:pointer}
-    input[type="date"]{cursor:pointer; color-scheme:dark}
-    html[data-theme="light"] input[type="date"]{color-scheme:light}
+    input[type="date"]{cursor:pointer; color-scheme:light}
     .reset-btn{
-      align-self:flex-end; background:var(--surface2); border:1px solid var(--line);
-      color:var(--muted); border-radius:10px; padding:11px 20px; font-size:13px;
-      font-weight:600; cursor:pointer; transition:all .2s ease;
+      align-self:flex-end; background:var(--surface); border:1px solid var(--line-hi);
+      color:var(--muted); border-radius:8px; padding:10px 18px; font-size:13px;
+      font-weight:600; cursor:pointer; transition:all .15s ease;
     }
     .reset-btn:hover{border-color:var(--danger); color:var(--danger)}
 
-    /* ================= TABLES ================= */
+    /* ============ TABLES ============ */
     .table-header{
-      font-family:var(--font-display); font-size:19px; font-weight:700;
-      margin-bottom:16px; display:flex; align-items:center; gap:10px;
+      font-size:17px; font-weight:700; margin-bottom:14px;
+      display:flex; align-items:center; gap:10px;
     }
     .table-header .badge{
-      font-family:var(--font-body); font-size:12.5px; background:var(--surface);
-      color:var(--muted); padding:4px 12px; border-radius:20px;
-      font-weight:600; border:1px solid var(--line);
+      font-size:12px; background:var(--surface); color:var(--muted);
+      padding:3px 11px; border-radius:20px; font-weight:600; border:1px solid var(--line);
     }
     .summary{font-size:13px; color:var(--muted); margin-bottom:14px}
     .summary b{color:var(--ink)}
@@ -272,125 +246,98 @@
       border:1px solid var(--line); border-radius:var(--radius); overflow:auto;
       background:var(--surface); box-shadow:var(--shadow-sm);
     }
-    table{width:100%; border-collapse:collapse; font-size:14px; min-width:640px}
+    table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:640px}
     thead th{
       position:sticky; top:0; background:var(--surface2); text-align:left;
-      padding:14px 20px; font-weight:700; font-size:11.5px; color:var(--muted);
+      padding:12px 18px; font-weight:700; font-size:11px; color:var(--muted);
       border-bottom:1px solid var(--line); white-space:nowrap;
-      text-transform:uppercase; letter-spacing:.8px;
-      user-select:none; cursor:pointer; transition:color .15s;
+      text-transform:uppercase; letter-spacing:.7px;
+      user-select:none; cursor:pointer;
     }
-    thead th:hover{color:var(--eu)}
-    thead th .arrow{font-size:10px; margin-left:4px; opacity:.8}
+    thead th:hover{color:var(--accent)}
+    thead th .arrow{font-size:9px; margin-left:4px}
     tbody td{
-      padding:13px 20px; border-bottom:1px solid var(--line);
+      padding:12px 18px; border-bottom:1px solid var(--line);
       white-space:nowrap; color:var(--ink);
     }
     tbody tr{transition:background .12s ease}
-    tbody tr:hover{background:var(--surface-hi)}
+    tbody tr:hover{background:var(--surface2)}
     tbody tr:last-child td{border-bottom:none}
-    .off-row td{color:var(--faint)!important}
+    .off-row td{color:var(--faint)}
 
-    /* ================= AGENT STATS ================= */
-    .stats-grid{
-      display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:30px;
+    /* >>> SHIFT TIME COLUMN in tables — distinct <<< */
+    td.shift-cell{
+      font-family:var(--font-mono); font-weight:600; font-size:12.5px;
+      color:var(--navy); background:var(--navy-soft);
+      font-variant-numeric:tabular-nums;
     }
+    tr.off-row td.shift-cell{color:var(--muted); background:var(--surface-hi)}
+
+    /* ============ AGENT STATS ============ */
+    .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:26px}
     .stat-card{
       background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-      padding:18px; display:flex; flex-direction:column; gap:4px; box-shadow:var(--shadow-sm);
-      transition:transform .2s ease, box-shadow .2s ease; animation:fadeUp .5s ease backwards;
+      padding:16px 18px; box-shadow:var(--shadow-sm);
     }
-    .stat-card:nth-child(2){animation-delay:.06s}
-    .stat-card:nth-child(3){animation-delay:.12s}
-    .stat-card:nth-child(4){animation-delay:.18s}
-    .stat-card:hover{transform:translateY(-3px); box-shadow:var(--shadow)}
     .stat-card .label{
-      font-size:11px; color:var(--muted); font-weight:700;
-      text-transform:uppercase; letter-spacing:.8px;
+      font-size:10.5px; color:var(--muted); font-weight:700;
+      text-transform:uppercase; letter-spacing:.7px;
     }
-    .stat-card .value{font-family:var(--font-display); font-size:26px; font-weight:700; line-height:1.2}
-    .stat-card .sub{font-size:12px; color:var(--faint)}
-    .stat-card.success{border-left:4px solid var(--eu)}
-    .stat-card.neutral{border-left:4px solid var(--udp)}
-    .stat-card.highlight{border-left:4px solid var(--info)}
-    .stat-card.warning{border-left:4px solid var(--glo)}
+    .stat-card .value{font-size:24px; font-weight:700; margin-top:4px; line-height:1.25; font-variant-numeric:tabular-nums}
+    .stat-card .sub{font-size:11.5px; color:var(--faint); margin-top:3px}
+    .stat-card.success{border-left:3px solid var(--eu)}
+    .stat-card.neutral{border-left:3px solid var(--udp)}
+    .stat-card.highlight{border-left:3px solid var(--info)}
+    .stat-card.warning{border-left:3px solid var(--glo)}
 
-    /* ================= CHART ================= */
+    /* ============ CHART ============ */
     .chart-card{
       background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-      padding:20px 22px; box-shadow:var(--shadow-sm); margin-bottom:30px;
-      animation:fadeUp .5s ease;
+      padding:18px 20px; box-shadow:var(--shadow-sm); margin-bottom:26px;
     }
     .chart-card h3{
-      margin:0 0 16px; font-family:var(--font-display); font-size:15px; font-weight:700;
-      color:var(--muted); text-transform:uppercase; letter-spacing:.6px;
+      margin:0 0 14px; font-size:11px; font-weight:700; color:var(--muted);
+      text-transform:uppercase; letter-spacing:.7px;
     }
-    .chart-bar{
-      display:flex; align-items:center; gap:12px; margin-bottom:10px;
-    }
+    .chart-bar{display:flex; align-items:center; gap:12px; margin-bottom:9px}
     .chart-bar .cl{
-      font-size:12px; color:var(--muted); font-weight:600; min-width:110px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:right;
+      font-family:var(--font-mono); font-size:11.5px; color:var(--muted); font-weight:600;
+      min-width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:right;
     }
-    .chart-bar .track{flex:1; height:22px; background:var(--surface2); border-radius:6px; overflow:hidden}
-    .chart-bar .fill{
-      height:100%; border-radius:6px; background:var(--grad);
-      width:0; animation:growBar .8s cubic-bezier(.25,.8,.4,1) forwards;
-    }
+    .chart-bar .track{flex:1; height:20px; background:var(--surface-hi); border-radius:4px; overflow:hidden}
+    .chart-bar .fill{height:100%; background:var(--navy); border-radius:4px; width:0; animation:growBar .7s ease forwards}
     @keyframes growBar{to{width:var(--w)}}
-    .chart-bar .val{font-size:12px; font-weight:700; color:var(--ink); min-width:30px}
+    .chart-bar .val{font-size:12px; font-weight:700; min-width:26px; font-variant-numeric:tabular-nums}
 
-    /* ================= STATES / SKELETON / TOAST ================= */
+    /* ============ STATES / TOAST ============ */
     .state-msg{
-      padding:56px 20px; text-align:center; color:var(--muted); font-size:15px;
-      background:var(--surface); border:1px dashed var(--line); border-radius:var(--radius);
+      padding:52px 20px; text-align:center; color:var(--muted); font-size:14px;
+      background:var(--surface); border:1px dashed var(--line-hi); border-radius:var(--radius);
     }
     .state-msg.error{color:var(--danger); border-color:var(--danger)}
-    .skel{
-      background:var(--surface2); border-radius:8px; position:relative; overflow:hidden;
-    }
-    .skel::after{
-      content:''; position:absolute; inset:0;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
-      animation:shimmer 1.4s infinite;
-    }
-    html[data-theme="light"] .skel::after{
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);
-    }
-    @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
-    #toastHolder{position:fixed; bottom:24px; right:24px; z-index:999; display:flex; flex-direction:column; gap:10px}
+    #toastHolder{position:fixed; bottom:22px; right:22px; z-index:999; display:flex; flex-direction:column; gap:8px}
     .toast{
-      background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--eu);
-      color:var(--ink); padding:13px 18px; border-radius:12px; box-shadow:var(--shadow);
-      font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:10px;
-      animation:toastIn .35s cubic-bezier(.21,1.02,.73,1); max-width:320px;
+      background:var(--navy); color:#fff; padding:12px 16px; border-radius:8px;
+      box-shadow:var(--shadow); font-size:13px; font-weight:600;
+      animation:toastIn .3s ease; max-width:320px;
     }
-    .toast.err{border-left-color:var(--danger)}
-    .toast.out{animation:toastOut .3s ease forwards}
+    .toast.err{background:var(--danger)}
     @keyframes toastIn{from{transform:translateX(120%); opacity:0}to{transform:none; opacity:1}}
-    @keyframes toastOut{to{transform:translateX(120%); opacity:0}}
 
-    @keyframes fadeUp{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
-    .fade-in{animation:fadeUp .4s ease}
+    footer.note{margin-top:44px; font-size:12px; color:var(--faint); line-height:1.6; text-align:center}
 
-    footer.note{
-      margin-top:48px; font-size:12px; color:var(--faint);
-      line-height:1.6; text-align:center;
-    }
-
-    /* ================= RESPONSIVE ================= */
+    /* ============ RESPONSIVE ============ */
     @media (max-width:640px){
-      .wrap{padding:20px 14px 60px}
-      .brand h1{font-size:20px}
-      .live-clock{font-size:13px; padding:7px 12px}
-      .date-btn{min-width:54px; padding:9px 12px}
-      .hero-date{font-size:23px}
-      .filters{display:grid; grid-template-columns:1fr; gap:14px; padding:16px}
+      .wrap{padding:18px 14px 60px}
+      .live-clock{font-size:12.5px; padding:7px 13px}
+      .date-btn{min-width:52px; padding:9px 11px}
+      .hero-date{font-size:21px}
+      .filters{display:grid; grid-template-columns:1fr; gap:12px; padding:14px}
       .field{min-width:100%}
       .reset-btn{width:100%}
       .stats-grid{grid-template-columns:repeat(2,1fr); gap:10px}
-      .stat-card .value{font-size:21px}
+      .stat-card .value{font-size:20px}
       .stat-card .sub{display:none}
       .agent-list{grid-template-columns:1fr}
       #schedTableShell{border:none; box-shadow:none; background:transparent; overflow:visible}
@@ -402,18 +349,18 @@
         grid-template-areas:"agent region" "date shift" "sysid sysid";
         row-gap:6px; column-gap:12px; align-items:center;
         background:var(--surface); border:1px solid var(--line);
-        border-radius:var(--radius); padding:14px 16px; margin-bottom:10px;
+        border-radius:var(--radius); padding:13px 15px; margin-bottom:9px;
       }
       #schedTable td{display:block; padding:0; border:none; white-space:normal}
-      #schedTable td:nth-child(1){grid-area:date; font-size:12.5px; font-weight:600; color:var(--muted)}
-      #schedTable td:nth-child(2){grid-area:shift; font-size:12.5px; color:var(--muted); text-align:right}
+      #schedTable td:nth-child(1){grid-area:date; font-size:12px; font-weight:600; color:var(--muted)}
+      #schedTable td:nth-child(2){grid-area:shift; font-size:12px; text-align:right}
       #schedTable td:nth-child(3){
-        grid-area:sysid; font-size:12px; color:var(--faint);
+        grid-area:sysid; font-size:11.5px; color:var(--faint);
         padding-top:8px; border-top:1px dashed var(--line);
       }
-      #schedTable td:nth-child(4){grid-area:agent; font-family:var(--font-display); font-size:15px; font-weight:700}
+      #schedTable td:nth-child(4){grid-area:agent; font-size:14.5px; font-weight:700}
       #schedTable td:nth-child(5){grid-area:region; justify-self:end}
-      .chart-bar .cl{min-width:80px; font-size:11px}
+      .chart-bar .cl{min-width:76px; font-size:10.5px}
       #toastHolder{left:14px; right:14px; bottom:14px}
     }
   </style>
@@ -424,26 +371,25 @@
   <header class="top">
     <div class="brand">
       <div class="logo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
-          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2.5"/>
         </svg>
       </div>
       <div>
         <h1>CSA Shift Roster</h1>
-        <div class="sub">Live duty schedule dashboard</div>
+        <div class="sub">Duty schedule &amp; agent assignments</div>
       </div>
     </div>
     <div class="head-right">
-      <div class="live-clock" id="liveClock">--:--<small>--</small></div>
-      <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+      <div class="live-clock" id="liveClock">--:--<span class="ampm">--</span></div>
     </div>
     <div class="updated" id="updatedAt"><span class="dot"></span>Connecting…</div>
   </header>
 
   <nav class="view-nav">
-    <button class="nav-btn active" data-view="todayView">📋 Today's Schedule</button>
-    <button class="nav-btn" data-view="detailsView">🗂️ All Entries</button>
-    <button class="nav-btn" data-view="agentView">👤 Agent History</button>
+    <button class="nav-btn active" data-view="todayView">Today's Schedule</button>
+    <button class="nav-btn" data-view="detailsView">All Entries</button>
+    <button class="nav-btn" data-view="agentView">Agent History</button>
   </nav>
 
   <!-- ========== TODAY VIEW ========== -->
@@ -451,11 +397,7 @@
     <div class="date-nav" id="dateNav"></div>
     <div class="hero-date" id="heroDate"></div>
     <div class="hero-sub">Duty schedule for agents assigned on the selected date.</div>
-    <div class="stat-row" id="statRow">
-      <div class="stat-chip eu"><span class="n skel" style="width:60px;height:34px;display:inline-block">&nbsp;</span><span class="l">&nbsp;</span></div>
-      <div class="stat-chip glo"><span class="n skel" style="width:60px;height:34px;display:inline-block">&nbsp;</span><span class="l">&nbsp;</span></div>
-      <div class="stat-chip udp"><span class="n skel" style="width:60px;height:34px;display:inline-block">&nbsp;</span><span class="l">&nbsp;</span></div>
-    </div>
+    <div class="stat-row" id="statRow"></div>
     <div id="groupsHolder"></div>
     <div class="state-msg" id="stateMsgToday">Loading schedule…</div>
   </div>
@@ -495,10 +437,10 @@
     </div>
 
     <div class="stats-grid" id="statsGrid" style="display:none;">
-      <div class="stat-card success"><span class="label">Total Duty Days</span><span class="value" id="statDutyDays">0</span><span class="sub">Within selected range</span></div>
-      <div class="stat-card neutral"><span class="label">Total Off Days</span><span class="value" id="statOffDays">0</span><span class="sub">Total days minus duty days</span></div>
-      <div class="stat-card highlight"><span class="label">Most Frequent Shift</span><span class="value" id="statTopShift" style="font-size:19px">N/A</span><span class="sub" id="statTopShiftCount">No shifts worked</span></div>
-      <div class="stat-card warning"><span class="label">Regions Worked</span><span class="value" id="statRegions" style="font-size:19px">N/A</span><span class="sub">Active regions</span></div>
+      <div class="stat-card success"><span class="label">Total Duty Days</span><div class="value" id="statDutyDays">0</div><div class="sub">Within selected range</div></div>
+      <div class="stat-card neutral"><span class="label">Total Off Days</span><div class="value" id="statOffDays">0</div><div class="sub">Total days minus duty days</div></div>
+      <div class="stat-card highlight"><span class="label">Most Frequent Shift</span><div class="value" id="statTopShift" style="font-size:17px">N/A</div><div class="sub" id="statTopShiftCount">No shifts worked</div></div>
+      <div class="stat-card warning"><span class="label">Regions Worked</span><div class="value" id="statRegions" style="font-size:17px">N/A</div><div class="sub">Active regions</div></div>
     </div>
 
     <div class="chart-card" id="chartCard" style="display:none;">
@@ -506,7 +448,7 @@
       <div id="chartHolder"></div>
     </div>
 
-    <div id="tableSection" style="display:none; margin-top:0;">
+    <div id="tableSection" style="display:none;">
       <div class="table-header">Shift History <span class="badge" id="resultCount">0 entries</span></div>
       <div class="table-shell">
         <table id="historyTable">
@@ -519,14 +461,12 @@
   </div>
 
   <footer class="note">
-    No login required — everyone can view this.<br>
-    Data auto-refreshes every 5 minutes. Refresh manually to see the latest Sheet changes.
+    No login required — everyone can view this. Data auto-refreshes every 5 minutes.
   </footer>
 </div>
 <div id="toastHolder"></div>
 
 <script>
-  /* ============ CONFIG ============ */
   const CONFIG = {
     SHEET_ID: "1qIhXOv2jU2pQagJbzkYms1vAQ9JPtAhwSNmibGfFZS4",
     SHEET_NAME: "Schedule",
@@ -536,7 +476,7 @@
   const csvUrl = () =>
     `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(CONFIG.SHEET_NAME)}&_=${Date.now()}`;
 
-  /* ============ HELPERS (XSS-FIXED) ============ */
+  /* ============ HELPERS ============ */
   function esc(s){
     return String(s ?? '').replace(/[&<>"']/g, c => ({
       '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
@@ -609,8 +549,7 @@
       agentName: header.findIndex(h => h.includes('agent')),
       region: header.findIndex(h => h.includes('region')),
     };
-    // Header validation fix
-    if(idx.date===-1 || idx.agentName===-1) throw new Error('Sheet missing required columns (Date / Agent)');
+    if(idx.date===-1 || idx.agentName===-1) throw new Error('Sheet missing required columns');
     return rows.slice(1).map(r => {
       const di = normalizeDate(r[idx.date] || '');
       return {
@@ -631,33 +570,21 @@
     const holder = document.getElementById('toastHolder');
     const t = document.createElement('div');
     t.className = 'toast' + (isErr ? ' err' : '');
-    t.innerHTML = `${isErr ? '⚠️' : '✅'} ${esc(msg)}`;
+    t.textContent = msg;
     holder.appendChild(t);
-    setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 350); }, 3800);
+    setTimeout(() => t.remove(), 3800);
   }
 
-  /* ============ THEME ============ */
-  const themeBtn = document.getElementById('themeBtn');
-  function applyTheme(t){
-    document.documentElement.setAttribute('data-theme', t);
-    themeBtn.textContent = t === 'dark' ? '🌙' : '☀️';
-    try{ localStorage.setItem('csa-theme', t); }catch(e){}
-  }
-  let savedTheme = 'dark';
-  try{ savedTheme = localStorage.getItem('csa-theme') || 'dark'; }catch(e){}
-  applyTheme(savedTheme);
-  themeBtn.addEventListener('click', () => {
-    applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-  });
-
-  /* ============ LIVE CLOCK ============ */
+  /* ============ LIVE CLOCK — 12-HOUR FORMAT ============ */
   const clockEl = document.getElementById('liveClock');
   function tickClock(){
     const n = new Date();
-    const h = String(n.getHours()).padStart(2,'0');
+    let h = n.getHours();
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if(h === 0) h = 12;          // 0 → 12 AM, 13 → 1 PM
     const m = String(n.getMinutes()).padStart(2,'0');
     const s = String(n.getSeconds()).padStart(2,'0');
-    clockEl.innerHTML = `${h}:${m}<span style="color:var(--eu)">:${s}</span><small>${n.getHours()<12?'AM':'PM'}</small>`;
+    clockEl.innerHTML = `${String(h).padStart(2,'0')}:${m}:${s}<span class="ampm">${ampm}</span>`;
   }
   tickClock(); setInterval(tickClock, 1000);
 
@@ -670,8 +597,6 @@
       ['todayView','detailsView','agentView'].forEach(id =>
         document.getElementById(id).style.display = (id===t ? 'block' : 'none')
       );
-      document.getElementById(t).classList.add('fade-in');
-      setTimeout(() => document.getElementById(t).classList.remove('fade-in'), 500);
     });
   });
 
@@ -718,19 +643,9 @@
       if(c[cls] !== undefined) c[cls]++;
     });
     document.getElementById('statRow').innerHTML = `
-      <div class="stat-chip eu"><span class="n" data-count="${c.eu}">0</span><span class="l">On duty in EU</span></div>
-      <div class="stat-chip glo"><span class="n" data-count="${c.glo}">0</span><span class="l">On duty in GLO</span></div>
-      <div class="stat-chip udp"><span class="n" data-count="${c.udp}">0</span><span class="l">On duty in UDP</span></div>`;
-    // Animated counters
-    document.querySelectorAll('#statRow .n').forEach(el => {
-      const target = parseInt(el.dataset.count)||0;
-      let cur = 0; const steps = 20, inc = target/steps;
-      const iv = setInterval(() => {
-        cur += inc;
-        if(cur >= target){ cur = target; clearInterval(iv); }
-        el.textContent = Math.round(cur);
-      }, 25);
-    });
+      <div class="stat-chip eu"><span class="n">${c.eu}</span><span class="l">On duty in EU</span></div>
+      <div class="stat-chip glo"><span class="n">${c.glo}</span><span class="l">On duty in GLO</span></div>
+      <div class="stat-chip udp"><span class="n">${c.udp}</span><span class="l">On duty in UDP</span></div>`;
   }
 
   function renderGroups(rows){
@@ -753,13 +668,13 @@
       if(ao && !bo) return 1; if(bo && !ao) return -1;
       return a.localeCompare(b);
     });
-    holder.innerHTML = keys.map((key,i) => {
+    holder.innerHTML = keys.map(key => {
       const isOff = /^off$/i.test(key);
       const rs = groups[key].sort((a,b) => a.agentName.localeCompare(b.agentName));
       return `
-      <div class="shift-group ${isOff?'off-group':''}" style="animation-delay:${i*0.06}s">
+      <div class="shift-group ${isOff?'off-group':''}">
         <div class="shift-group-header">
-          <span class="name">${esc(key)}</span>
+          <span class="name"><span class="shift-time">${esc(key)}</span></span>
           <span class="count">${rs.length} agent${rs.length!==1?'s':''}</span>
         </div>
         <div class="agent-list">
@@ -813,7 +728,6 @@
       return true;
     });
 
-    // Sortable columns
     const c = DETAIL_SORT.col, dir = DETAIL_SORT.dir;
     rows.sort((a,b) => (a[c]||'').localeCompare(b[c]||'') * dir);
 
@@ -832,7 +746,7 @@
         const isOff = /^off$/i.test(r.shift);
         return `<tr class="${isOff?'off-row':''}">
           <td>${esc(r.display)}</td>
-          <td>${isOff ? '<span class="pill off">OFF</span>' : esc(r.shift)}</td>
+          <td class="shift-cell">${isOff ? 'OFF' : esc(r.shift)}</td>
           <td>${esc(r.systemId)}</td>
           <td>${esc(r.agentName)}</td>
           <td><span class="pill ${regionPillClass(r.region)}">${esc(r.region)}</span></td>
@@ -844,7 +758,6 @@
       `Showing <b>${rows.length}</b> entries${q ? ` for "${esc(document.getElementById('fAgent').value.trim())}"` : ''}`;
   }
 
-  // Sort handlers
   document.querySelectorAll('#schedTable thead th').forEach(th => {
     th.addEventListener('click', () => {
       const col = th.dataset.col;
@@ -883,10 +796,10 @@
     const entries = Object.entries(shiftCounts).sort((a,b) => b[1]-a[1]).slice(0,8);
     if(entries.length === 0){ holder.style.display = 'none'; return; }
     const max = entries[0][1];
-    document.getElementById('chartHolder').innerHTML = entries.map(([s,n],i) => `
+    document.getElementById('chartHolder').innerHTML = entries.map(([s,n]) => `
       <div class="chart-bar">
         <span class="cl">${esc(s)}</span>
-        <span class="track"><span class="fill" style="--w:${Math.max(4,(n/max)*100)}%; animation-delay:${i*0.08}s"></span></span>
+        <span class="track"><span class="fill" style="--w:${Math.max(4,(n/max)*100)}%"></span></span>
         <span class="val">${n}</span>
       </div>`).join('');
     holder.style.display = 'block';
@@ -916,7 +829,6 @@
       (!endStr || r.sortKey <= endStr)
     );
 
-    // Map lookup (performance fix)
     const rowMap = new Map(filtered.map(r => [r.sortKey, r]));
 
     let dutyDays = 0;
@@ -930,7 +842,6 @@
       }
     });
 
-    // Build full range (DST-safe loop)
     const start = new Date(startStr + 'T00:00:00');
     const end = new Date(endStr + 'T00:00:00');
     const tableRows = [];
@@ -989,7 +900,7 @@
       return `<tr class="${isOff?'off-row':''}">
         <td>${esc(r.display)}</td>
         <td style="color:var(--muted); font-weight:500">${esc(r.dayName)}</td>
-        <td><span class="pill ${isOff?'off':regionPillClass(r.region)}">${esc(r.shift)}</span></td>
+        <td class="shift-cell">${esc(r.shift)}</td>
         <td>${esc(r.region||'-')}</td>
         <td style="color:var(--muted)">${esc(r.systemId||'-')}</td>
       </tr>`;
@@ -1015,14 +926,13 @@
       populateSelect('fRegion', [...new Set(ALL_ROWS.map(r=>r.region))].filter(Boolean));
       populateSelect('fShift', [...new Set(ALL_ROWS.map(r=>r.shift))].filter(Boolean).sort());
       renderDetails();
-      populateAgents(!isFirstLoad);   // preserve selection on refresh
+      populateAgents(!isFirstLoad);
       if(isFirstLoad) setDefaultDates();
       renderHistory();
 
-      updEl.innerHTML = `<span class="dot"></span>Last updated: ${new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}`;
+      updEl.innerHTML = `<span class="dot"></span>Last updated: ${new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}`;
       msgToday.classList.remove('error');
       if(!isFirstLoad && changed) toast('Schedule updated with fresh data');
-      else if(!isFirstLoad) toast('Data is up to date');
     } catch(err){
       if(ALL_ROWS.length === 0){
         msgToday.classList.add('error');
