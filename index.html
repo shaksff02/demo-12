@@ -3,365 +3,567 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSA — Shift Roster</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxZTM3NjAiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMzIiByPSIxOCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMzIgMjRWMzNsNSAzIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9nPjwvc3ZnPg==">
+  <title>CSA - Roster</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjOTI2OWI4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzU0MzY2ZCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSIyMiIgeT0iOCIgd2lkdGg9IjQiIGhlaWdodD0iOSIgcng9IjIiIGZpbGw9IiNmZmZmZmYiLz4KICA8cmVjdCB4PSIzOCIgeT0iOCIgd2lkdGg9IjQiIGhlaWdodD0iOSIgcng9IjIiIGZpbGw9IiNmZmZmZmYiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjM1IiByPSIxOCIgZmlsbD0iI2ZmZmZmZiIvPgogIDxjaXJjbGUgY3g9IjMyIiBjeT0iMzUiIHI9IjE4IiBmaWxsPSJub25lIiBzdHJva2U9IiM1NDM2NmQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxsaW5lIHgxPSIzMiIgeTE9IjM1IiB4Mj0iMzIiIHkyPSIyNCIgc3Ryb2tlPSIjNTQzNjZkIiBzdHJva2Utd2lkdGg9IjMuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjMyIiB5MT0iMzUiIHgyPSI0MCIgeTI9IjM1IiBzdHJva2U9IiM1NDM2NmQiIHN0cm9rZS13aWR0aD0iMy4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjM1IiByPSIyLjQiIGZpbGw9IiM1NDM2NmQiLz4KPC9zdmc+">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
   <style>
-    /* ============ PROFESSIONAL TOKENS (LIGHT ONLY) ============ */
+    /* ===== Merged Styles ===== */
     :root{
-      --bg:#f4f6f9;
+      --paper:#f8f9fa;
       --surface:#ffffff;
-      --surface2:#f7f9fb;
-      --surface-hi:#eef2f6;
-      --line:#e3e8ee;
-      --line-hi:#d3dae3;
-      --ink:#1b2733;
-      --muted:#5b6a7b;
-      --faint:#93a1b1;
-
-      --navy:#1e3760;          /* primary — corporate deep blue */
-      --navy-soft:#eaeff7;
-      --accent:#2f6fb5;        /* interactive blue */
-
-      --eu:#1a7f63; --eu-dim:#e3f2ec;
-      --glo:#96690d; --glo-dim:#faf1df;
-      --udp:#6a4d9e; --udp-dim:#efeaf7;
-      --info:#2b6cb0; --info-dim:#e8f0f9;
-      --danger:#c23b3b; --danger-dim:#fbeaea;
-
-      --shadow:0 1px 2px rgba(27,39,51,.05), 0 8px 24px rgba(27,39,51,.07);
-      --shadow-sm:0 1px 2px rgba(27,39,51,.06);
-      --radius:10px;
-      --font-body:'Inter',-apple-system,'Segoe UI',sans-serif;
-      --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+      --surface-alt:#f1f3f5;
+      --raised:#e9ecef;
+      --line:#dee2e6;
+      --ink:#212529;
+      --muted:#6c757d;
+      --faint:#adb5bd;
+      --emerald:#0b7a5f;
+      --emerald-dim:#e6f4ef;
+      --gold:#9c6f0e;
+      --gold-dim:#fdf4e3;
+      --plum:#6f4a86;
+      --plum-dim:#f0eaf5;
+      --info:#2c7be5;
+      --info-dim:#e7f1fd;
+      --danger:#c0392b;
+      --radius:12px;
+      --font-display:'Fraunces','Georgia',serif;
+      --font-body:'Inter', sans-serif;
     }
 
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
     body{
-      margin:0; background:var(--bg); color:var(--ink);
-      font-family:var(--font-body); -webkit-font-smoothing:antialiased;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:var(--font-body);
+      -webkit-font-smoothing:antialiased;
       min-height:100vh;
     }
-    .wrap{max-width:1280px; margin:0 auto; padding:28px 24px 80px}
 
-    /* ============ HEADER ============ */
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:40px 24px 70px;
+    }
+
     header.top{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; flex-wrap:wrap; margin-bottom:22px;
-      padding-bottom:18px; border-bottom:1px solid var(--line);
-    }
-    .brand{display:flex; align-items:center; gap:13px}
-    .brand .logo{
-      width:44px; height:44px; border-radius:10px; background:var(--navy);
-      display:flex; align-items:center; justify-content:center;
-      box-shadow:var(--shadow-sm); flex-shrink:0;
-    }
-    .brand h1{
-      font-family:var(--font-body); font-size:19px; font-weight:700;
-      margin:0; letter-spacing:-.2px; color:var(--ink);
-    }
-    .brand .sub{font-size:12px; color:var(--muted); margin-top:2px}
-    .head-right{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
-
-    /* 12-hour clock */
-    .live-clock{
-      background:var(--navy); color:#fff; border:none;
-      font-family:var(--font-mono); font-weight:600; font-size:14px;
-      padding:9px 16px; border-radius:8px; box-shadow:var(--shadow-sm);
-      font-variant-numeric:tabular-nums; letter-spacing:.5px;
-      display:flex; align-items:baseline; gap:7px;
-    }
-    .live-clock .ampm{
-      font-family:var(--font-body); font-size:10.5px; font-weight:700;
-      color:#9db8dc; letter-spacing:1px;
-    }
-    .updated{font-size:11.5px; color:var(--faint); display:flex; align-items:center; gap:6px; width:100%; order:3}
-    .updated .dot{width:6px; height:6px; border-radius:50%; background:var(--eu); animation:pulse 2.4s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-
-    /* ============ TABS ============ */
-    .view-nav{
-      display:flex; gap:2px; margin-bottom:26px;
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+      padding-bottom:24px;
       border-bottom:1px solid var(--line);
-      overflow-x:auto; width:100%;
+    }
+    header.top h1{
+      font-family:var(--font-display);
+      font-size:28px;
+      font-weight:600;
+      margin:0;
+      letter-spacing:-0.5px;
+      color:var(--ink);
+    }
+    header.top .updated{
+      font-size:12.5px;
+      color:var(--faint);
+      font-family:var(--font-body);
+    }
+
+    /* ---- Tab Navigation ---- */
+    .view-nav{
+      display:flex;
+      gap:10px;
+      margin-bottom:24px;
+      border-bottom:1px solid var(--line);
     }
     .nav-btn{
-      background:transparent; border:none; padding:12px 18px;
-      font-size:13.5px; font-weight:600; color:var(--muted); cursor:pointer;
-      border-bottom:2px solid transparent; margin-bottom:-1px;
-      transition:color .15s, border-color .15s; white-space:nowrap;
+      background:transparent;
+      border:none;
+      padding:12px 18px;
+      font-size:14px;
+      font-family:var(--font-body);
+      font-weight:500;
+      color:var(--muted);
+      cursor:pointer;
+      border-bottom:2px solid transparent;
+      transition:color .15s ease, border-color .15s ease;
     }
-    .nav-btn:hover{color:var(--ink)}
-    .nav-btn.active{color:var(--navy); border-bottom-color:var(--navy)}
+    .nav-btn:hover{ color:var(--ink); }
+    .nav-btn.active{ 
+      color:var(--emerald); 
+      border-bottom-color:var(--emerald); 
+    }
 
-    /* ============ DATE STRIP ============ */
+    /* ---- Date Navigation ---- */
     .date-nav{
-      display:flex; gap:8px; margin-bottom:24px; overflow-x:auto;
-      padding:2px 2px 8px; scrollbar-width:none; scroll-snap-type:x proximity;
+      display:flex;
+      gap:10px;
+      margin-bottom:24px;
+      overflow-x:auto;
+      scroll-behavior:smooth;
+      -webkit-overflow-scrolling:touch;
+      scroll-snap-type:x proximity;
+      scrollbar-width:none;
+      padding:2px 2px 10px;
     }
-    .date-nav::-webkit-scrollbar{display:none}
+    .date-nav::-webkit-scrollbar{ display:none; }
     .date-btn{
-      flex:0 0 auto; scroll-snap-align:center;
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
-      min-width:60px; background:var(--surface); border:1px solid var(--line);
-      color:var(--muted); padding:10px 13px; border-radius:9px; cursor:pointer;
-      transition:all .15s ease; box-shadow:var(--shadow-sm);
+      flex:0 0 auto;
+      scroll-snap-align:start;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:3px;
+      min-width:60px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      color:var(--muted);
+      padding:10px 14px;
+      border-radius:10px;
+      font-family:var(--font-body);
+      cursor:pointer;
+      transition:all .15s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
-    .date-btn .m{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--faint)}
-    .date-btn .d{font-size:18px; font-weight:700; color:var(--ink); line-height:1; font-variant-numeric:tabular-nums}
-    .date-btn .w{font-size:10.5px; font-weight:500; color:var(--faint)}
-    .date-btn:hover{border-color:var(--accent)}
-    .date-btn.today::after{content:''; width:4px; height:4px; border-radius:50%; background:var(--accent); margin-top:2px}
-    .date-btn.active{background:var(--navy); border-color:var(--navy)}
-    .date-btn.active .m,.date-btn.active .d,.date-btn.active .w{color:#fff}
-    .date-btn.active.today::after{background:#fff}
+    .date-btn .m{
+      font-size:11px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+      color:var(--faint);
+    }
+    .date-btn .d{
+      font-family:var(--font-display);
+      font-size:19px;
+      font-weight:700;
+      color:var(--ink);
+      line-height:1;
+    }
+    .date-btn .w{
+      font-size:10.5px;
+      font-weight:500;
+      color:var(--faint);
+    }
+    .date-btn:hover{
+      border-color:var(--emerald);
+    }
+    .date-btn:hover .m, .date-btn:hover .d, .date-btn:hover .w{ color:var(--emerald); }
+    .date-btn.active{
+      background:var(--emerald);
+      border-color:var(--emerald);
+    }
+    .date-btn.active .m, .date-btn.active .d, .date-btn.active .w{ color:#fff; }
 
-    /* ============ HERO ============ */
+    /* ---- Shared Components ---- */
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-bottom:24px;
+      align-items:flex-end;
+      background:var(--surface);
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 4px 12px rgba(0,0,0,0.02);
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:150px;
+      flex:1;
+    }
+    .field.grow{ flex:1 1 220px; }
+    .field label{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:500;
+    }
+    select, input[type="text"], input[type="date"]{
+      background:var(--surface-alt);
+      border:1px solid var(--line);
+      color:var(--ink);
+      border-radius:8px;
+      padding:11px 14px;
+      font-size:14px;
+      font-family:var(--font-body);
+      outline:none;
+      transition:border-color .15s ease, box-shadow .15s ease;
+      width: 100%;
+    }
+    select:focus, input[type="text"]:focus, input[type="date"]:focus{ 
+      border-color:var(--emerald); 
+      box-shadow:0 0 0 3px var(--emerald-dim);
+      background:var(--surface);
+    }
+    select{ cursor:pointer; }
+    input[type="date"]{ cursor:pointer; }
+
+    .clear-btn, .reset-btn{
+      align-self:flex-end;
+      background:transparent;
+      border:1px solid var(--line);
+      color:var(--muted);
+      border-radius:8px;
+      padding:11px 20px;
+      font-size:13px;
+      font-family:var(--font-body);
+      font-weight:500;
+      cursor:pointer;
+      transition:all .15s ease;
+    }
+    .clear-btn:hover, .reset-btn:hover{ border-color:var(--ink); color:var(--ink); }
+
+    .pill{
+      display:inline-block;
+      padding:4px 12px;
+      border-radius:20px;
+      font-size:11.5px;
+      font-weight:600;
+      font-family:var(--font-body);
+      flex-shrink:0;
+    }
+    .pill.eu{ background:var(--emerald-dim); color:var(--emerald); }
+    .pill.glo{ background:var(--gold-dim); color:var(--gold); }
+    .pill.udp{ background:var(--plum-dim); color:var(--plum); }
+    .pill.other{ background:var(--info-dim); color:var(--info); }
+    .pill.off{ background:var(--raised); color:var(--muted); }
+
+    /* ---- Today View (Professional Dashboard) ---- */
     .hero-date{
-      font-size:25px; font-weight:700; letter-spacing:-.3px;
-      margin-bottom:5px; color:var(--ink);
+      font-family:var(--font-display);
+      font-size:28px;
+      font-weight:600;
+      color:var(--ink);
+      margin-bottom:8px;
     }
-    .hero-sub{font-size:13.5px; color:var(--muted); margin-bottom:26px}
+    .hero-sub{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:32px;
+    }
 
-    /* ============ STAT CHIPS ============ */
     .stat-row{
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:14px; margin-bottom:30px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:16px;
+      margin-bottom:36px;
     }
     .stat-chip{
-      background:var(--surface); border:1px solid var(--line);
-      border-radius:var(--radius); padding:18px 20px;
-      box-shadow:var(--shadow-sm); position:relative;
-      transition:box-shadow .2s ease;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.02);
+      position:relative;
+      overflow:hidden;
     }
-    .stat-chip:hover{box-shadow:var(--shadow)}
-    .stat-chip::before{content:''; position:absolute; top:0; left:0; bottom:0; width:3px; border-radius:10px 0 0 10px}
-    .stat-chip.eu::before{background:var(--eu)}
-    .stat-chip.glo::before{background:var(--glo)}
-    .stat-chip.udp::before{background:var(--udp)}
-    .stat-chip .n{font-size:30px; font-weight:700; line-height:1; font-variant-numeric:tabular-nums}
-    .stat-chip .l{font-size:12.5px; color:var(--muted); font-weight:500; margin-top:6px; display:block}
+    .stat-chip::before{
+      content:'';
+      position:absolute;
+      top:0; left:0; bottom:0;
+      width:4px;
+      background:var(--faint);
+    }
+    .stat-chip .n{ font-family:var(--font-display); font-size:32px; font-weight:700; line-height:1; color:var(--ink); }
+    .stat-chip .l{ font-size:13px; color:var(--muted); font-weight:500; }
+    
+    .stat-chip.eu::before{ background:var(--emerald); }
+    .stat-chip.glo::before{ background:var(--gold); }
+    .stat-chip.udp::before{ background:var(--plum); }
 
-    /* ============ SHIFT GROUPS ============ */
     .shift-group{
-      border:1px solid var(--line); border-radius:var(--radius);
-      background:var(--surface); margin-bottom:18px; overflow:hidden;
-      box-shadow:var(--shadow-sm);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface);
+      margin-bottom:24px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.02);
     }
-    .shift-group.off-group{opacity:.8; border-style:dashed}
+    .shift-group.off-group{ opacity:0.8; border-style:dashed; }
+    
     .shift-group-header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:15px 20px; background:var(--surface2); border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 24px;
+      background:var(--surface-alt);
+      border-bottom:1px solid var(--line);
     }
-    .shift-group-header .name{display:flex; align-items:center; gap:11px; min-width:0}
-
-    /* >>> SHIFT TIME — distinct mono chip <<< */
-    .shift-time{
-      font-family:var(--font-mono); font-weight:600; font-size:13px;
-      color:var(--navy); background:var(--navy-soft);
-      border:1px solid #d7e1ef; border-radius:7px;
-      padding:6px 12px; letter-spacing:.3px; white-space:nowrap;
-      font-variant-numeric:tabular-nums;
+    .shift-group-header .name{ 
+      font-family:var(--font-display); 
+      font-weight:600; 
+      font-size:18px; 
+      color:var(--ink); 
+      display:flex; 
+      align-items:center; 
+      gap:10px; 
     }
-    .shift-group.off-group .shift-time{color:var(--muted); background:var(--surface-hi); border-color:var(--line)}
-    .shift-group-header .count{
-      font-size:12px; color:var(--muted); background:var(--surface);
-      border:1px solid var(--line); border-radius:999px; padding:4px 12px; font-weight:600;
-      white-space:nowrap;
+    .shift-group-header .name::before {
+      content:'';
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--emerald);
     }
-    .agent-list{
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-      gap:1px; background:var(--line);
+    .shift-group.off-group .shift-group-header .name::before {
+      background:var(--faint);
+    }
+    .shift-group-header .count{ 
+      font-size:12px; 
+      color:var(--muted); 
+      background:var(--surface); 
+      border:1px solid var(--line); 
+      border-radius:999px; 
+      padding:5px 14px; 
+      font-weight:500;
+    }
+    
+    /* Agent Grid Layout */
+    .agent-list{ 
+      display:grid; 
+      grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+      gap:1px;
+      background:var(--line);
     }
     .agent-row{
-      background:var(--surface); display:flex; align-items:center; gap:13px;
-      padding:14px 20px; font-size:13.5px; transition:background .12s ease; min-width:0;
+      background:var(--surface);
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:16px 24px;
+      font-size:14px;
+      transition:background-color .12s ease;
+      min-width: 0; 
     }
-    .agent-row:hover{background:var(--surface2)}
+    .agent-row:hover{ background:var(--surface-alt); }
+
     .avatar{
-      width:36px; height:36px; border-radius:8px; display:flex;
-      align-items:center; justify-content:center;
-      font-size:12px; font-weight:700; flex-shrink:0;
+      width:38px; height:38px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-display); font-weight:600; font-size:14px;
+      flex-shrink:0;
     }
-    .avatar.eu{background:var(--eu-dim); color:var(--eu)}
-    .avatar.glo{background:var(--glo-dim); color:var(--glo)}
-    .avatar.udp{background:var(--udp-dim); color:var(--udp)}
-    .avatar.other{background:var(--surface-hi); color:var(--muted)}
-    .agent-info{min-width:0; display:flex; flex-direction:column; gap:2px; flex:1}
-    .agent-info .name{font-weight:600; line-height:1.3; word-break:break-word}
-    .agent-info .sysid{
-      color:var(--faint); font-size:11.5px; white-space:nowrap;
-      overflow:hidden; text-overflow:ellipsis;
-    }
+    .avatar.eu{ background:var(--emerald-dim); color:var(--emerald); }
+    .avatar.glo{ background:var(--gold-dim); color:var(--gold); }
+    .avatar.udp{ background:var(--plum-dim); color:var(--plum); }
+    .avatar.other{ background:var(--raised); color:var(--muted); }
 
-    /* ============ PILLS ============ */
-    .pill{
-      display:inline-block; padding:3px 11px; border-radius:6px;
-      font-size:11.5px; font-weight:700; flex-shrink:0; letter-spacing:.4px;
+    .agent-info{ min-width:0; display:flex; flex-direction:column; gap:2px; flex:1; }
+    .agent-info .name{ 
+      color:var(--ink); 
+      font-weight:600; 
+      white-space: normal; 
+      word-break: break-word; 
+      line-height: 1.3;
     }
-    .pill.eu{background:var(--eu-dim); color:var(--eu)}
-    .pill.glo{background:var(--glo-dim); color:var(--glo)}
-    .pill.udp{background:var(--udp-dim); color:var(--udp)}
-    .pill.other{background:var(--info-dim); color:var(--info)}
-    .pill.off{background:var(--surface-hi); color:var(--muted)}
+    .agent-info .sysid{ color:var(--faint); font-size:12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    /* ============ FILTERS ============ */
-    .filters{
-      display:flex; flex-wrap:wrap; gap:14px; margin-bottom:22px; align-items:flex-end;
-      background:var(--surface); padding:18px 20px; border:1px solid var(--line);
-      border-radius:var(--radius); box-shadow:var(--shadow-sm);
-    }
-    .field{display:flex; flex-direction:column; gap:6px; min-width:150px; flex:1}
-    .field.grow{flex:1 1 220px}
-    .field label{font-size:11.5px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.5px}
-    select, input[type="text"], input[type="date"]{
-      background:var(--surface); border:1px solid var(--line-hi); color:var(--ink);
-      border-radius:8px; padding:10px 13px; font-size:13.5px; font-family:var(--font-body);
-      outline:none; transition:border-color .15s, box-shadow .15s; width:100%;
-    }
-    select:focus, input:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--info-dim)}
-    select{cursor:pointer}
-    input[type="date"]{cursor:pointer; color-scheme:light}
-    .reset-btn{
-      align-self:flex-end; background:var(--surface); border:1px solid var(--line-hi);
-      color:var(--muted); border-radius:8px; padding:10px 18px; font-size:13px;
-      font-weight:600; cursor:pointer; transition:all .15s ease;
-    }
-    .reset-btn:hover{border-color:var(--danger); color:var(--danger)}
+    /* ---- Details & History Tables ---- */
+    .summary{ font-size:13px; color:var(--muted); margin-bottom:14px; }
+    .summary b{ color:var(--ink); font-weight:600; }
 
-    /* ============ TABLES ============ */
     .table-header{
-      font-size:17px; font-weight:700; margin-bottom:14px;
-      display:flex; align-items:center; gap:10px;
+      font-family:var(--font-display);
+      font-size:20px;
+      font-weight:600;
+      margin-bottom:16px;
+      color:var(--ink);
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
-    .table-header .badge{
-      font-size:12px; background:var(--surface); color:var(--muted);
-      padding:3px 11px; border-radius:20px; font-weight:600; border:1px solid var(--line);
+    .table-header span.badge{
+      font-family:var(--font-body);
+      font-size:13px;
+      background:var(--surface-alt);
+      color:var(--muted);
+      padding:4px 10px;
+      border-radius:20px;
+      font-weight:500;
     }
-    .summary{font-size:13px; color:var(--muted); margin-bottom:14px}
-    .summary b{color:var(--ink)}
+
     .table-shell{
-      border:1px solid var(--line); border-radius:var(--radius); overflow:auto;
-      background:var(--surface); box-shadow:var(--shadow-sm);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:auto;
+      background:var(--surface);
+      box-shadow:0 4px 12px rgba(0,0,0,0.02);
     }
-    table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:640px}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:14px;
+      min-width:640px;
+    }
     thead th{
-      position:sticky; top:0; background:var(--surface2); text-align:left;
-      padding:12px 18px; font-weight:700; font-size:11px; color:var(--muted);
-      border-bottom:1px solid var(--line); white-space:nowrap;
-      text-transform:uppercase; letter-spacing:.7px;
-      user-select:none; cursor:pointer;
+      position:sticky; top:0;
+      background:var(--surface-alt);
+      text-align:left;
+      padding:14px 20px;
+      font-weight:600;
+      font-size:12.5px;
+      color:var(--muted);
+      border-bottom:1px solid var(--line);
+      white-space:nowrap;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
     }
-    thead th:hover{color:var(--accent)}
-    thead th .arrow{font-size:9px; margin-left:4px}
     tbody td{
-      padding:12px 18px; border-bottom:1px solid var(--line);
-      white-space:nowrap; color:var(--ink);
+      padding:14px 20px;
+      border-bottom:1px solid var(--line);
+      white-space:nowrap;
+      color:var(--ink);
     }
-    tbody tr{transition:background .12s ease}
-    tbody tr:hover{background:var(--surface2)}
-    tbody tr:last-child td{border-bottom:none}
-    .off-row td{color:var(--faint)}
+    tbody tr:nth-child(even){ background:var(--surface-alt); }
+    tbody tr:hover{ background:var(--raised); }
+    tbody tr:last-child td{ border-bottom:none; }
+    .off-row td{ color:var(--faint); }
+    .off-tag{ color:var(--faint); font-style:normal; font-size:13px; }
 
-    /* >>> SHIFT TIME COLUMN in tables — distinct <<< */
-    td.shift-cell{
-      font-family:var(--font-mono); font-weight:600; font-size:12.5px;
-      color:var(--navy); background:var(--navy-soft);
-      font-variant-numeric:tabular-nums;
-    }
-    tr.off-row td.shift-cell{color:var(--muted); background:var(--surface-hi)}
+    #schedTable td:nth-child(1){ font-weight:600; }
+    #schedTable td:nth-child(4){ font-weight:600; }
+    #schedTable td:nth-child(3){ color:var(--muted); font-size:13px; }
 
-    /* ============ AGENT STATS ============ */
-    .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:26px}
-    .stat-card{
-      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-      padding:16px 18px; box-shadow:var(--shadow-sm);
-    }
-    .stat-card .label{
-      font-size:10.5px; color:var(--muted); font-weight:700;
-      text-transform:uppercase; letter-spacing:.7px;
-    }
-    .stat-card .value{font-size:24px; font-weight:700; margin-top:4px; line-height:1.25; font-variant-numeric:tabular-nums}
-    .stat-card .sub{font-size:11.5px; color:var(--faint); margin-top:3px}
-    .stat-card.success{border-left:3px solid var(--eu)}
-    .stat-card.neutral{border-left:3px solid var(--udp)}
-    .stat-card.highlight{border-left:3px solid var(--info)}
-    .stat-card.warning{border-left:3px solid var(--glo)}
-
-    /* ============ CHART ============ */
-    .chart-card{
-      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-      padding:18px 20px; box-shadow:var(--shadow-sm); margin-bottom:26px;
-    }
-    .chart-card h3{
-      margin:0 0 14px; font-size:11px; font-weight:700; color:var(--muted);
-      text-transform:uppercase; letter-spacing:.7px;
-    }
-    .chart-bar{display:flex; align-items:center; gap:12px; margin-bottom:9px}
-    .chart-bar .cl{
-      font-family:var(--font-mono); font-size:11.5px; color:var(--muted); font-weight:600;
-      min-width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:right;
-    }
-    .chart-bar .track{flex:1; height:20px; background:var(--surface-hi); border-radius:4px; overflow:hidden}
-    .chart-bar .fill{height:100%; background:var(--navy); border-radius:4px; width:0; animation:growBar .7s ease forwards}
-    @keyframes growBar{to{width:var(--w)}}
-    .chart-bar .val{font-size:12px; font-weight:700; min-width:26px; font-variant-numeric:tabular-nums}
-
-    /* ============ STATES / TOAST ============ */
     .state-msg{
-      padding:52px 20px; text-align:center; color:var(--muted); font-size:14px;
-      background:var(--surface); border:1px dashed var(--line-hi); border-radius:var(--radius);
+      padding:60px 20px;
+      text-align:center;
+      color:var(--muted);
+      font-size:15px;
+      background:var(--surface);
+      border:1px dashed var(--line);
+      border-radius:var(--radius);
     }
-    .state-msg.error{color:var(--danger); border-color:var(--danger)}
+    .state-msg.error{ color:var(--danger); border-color:var(--danger); }
 
-    #toastHolder{position:fixed; bottom:22px; right:22px; z-index:999; display:flex; flex-direction:column; gap:8px}
-    .toast{
-      background:var(--navy); color:#fff; padding:12px 16px; border-radius:8px;
-      box-shadow:var(--shadow); font-size:13px; font-weight:600;
-      animation:toastIn .3s ease; max-width:320px;
+    /* ---- Agent Stats Cards ---- */
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:16px;
+      margin-bottom:32px;
     }
-    .toast.err{background:var(--danger)}
-    @keyframes toastIn{from{transform:translateX(120%); opacity:0}to{transform:none; opacity:1}}
+    .stat-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.02);
+    }
+    .stat-card .label{ font-size:12px; color:var(--muted); font-weight:500; text-transform:uppercase; letter-spacing:0.5px; }
+    .stat-card .value{ font-family:var(--font-display); font-size:26px; font-weight:600; color:var(--ink); line-height:1.2; }
+    .stat-card .sub{ font-size:12px; color:var(--faint); }
+    .stat-card.highlight{ border-left:4px solid var(--info); }
+    .stat-card.success{ border-left:4px solid var(--emerald); }
+    .stat-card.warning{ border-left:4px solid var(--gold); }
+    .stat-card.neutral{ border-left:4px solid var(--plum); }
 
-    footer.note{margin-top:44px; font-size:12px; color:var(--faint); line-height:1.6; text-align:center}
+    footer.note{
+      margin-top:40px;
+      font-size:12px;
+      color:var(--faint);
+      line-height:1.6;
+      text-align:center;
+    }
 
-    /* ============ RESPONSIVE ============ */
+    /* ===== MOBILE RESPONSIVE FIXES ===== */
     @media (max-width:640px){
-      .wrap{padding:18px 14px 60px}
-      .live-clock{font-size:12.5px; padding:7px 13px}
-      .date-btn{min-width:52px; padding:9px 11px}
-      .hero-date{font-size:21px}
-      .filters{display:grid; grid-template-columns:1fr; gap:12px; padding:14px}
-      .field{min-width:100%}
-      .reset-btn{width:100%}
-      .stats-grid{grid-template-columns:repeat(2,1fr); gap:10px}
-      .stat-card .value{font-size:20px}
-      .stat-card .sub{display:none}
-      .agent-list{grid-template-columns:1fr}
-      #schedTableShell{border:none; box-shadow:none; background:transparent; overflow:visible}
-      #schedTable{min-width:0}
-      #schedTable thead{display:none}
-      #schedTable tbody{display:block}
+      .wrap{ padding:24px 16px 48px; }
+      header.top{ flex-direction:column; align-items:flex-start; gap:8px; }
+      header.top h1{ font-size:24px; }
+      header.top .updated{ font-size: 11px; }
+      
+      /* Date strip stays a horizontally scrollable row on mobile too */
+      .date-btn {
+        min-width:54px;
+        padding: 9px 12px;
+      }
+
+      .hero-date{ font-size:22px; margin-top: 10px; }
+      .hero-sub{ margin-bottom: 24px; }
+      
+      /* Filters Grid for Mobile */
+      .filters{ 
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 16px;
+      }
+      .field {
+        width: 100%;
+        min-width: 100%;
+      }
+      .clear-btn, .reset-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .stats-grid{ grid-template-columns:repeat(2, 1fr); gap: 12px; }
+      .stat-card { padding: 14px; }
+      .stat-card .value { font-size: 22px; }
+      
+      .table-shell { border-radius: 8px; }
+      .agent-list { grid-template-columns: 1fr; }
+
+      /* ---- Details Table -> Card View on Mobile ---- */
+      #schedTableShell{
+        border:none;
+        box-shadow:none;
+        background:transparent;
+        overflow:visible;
+      }
+      #schedTable{ min-width:0; }
+      #schedTable thead{ display:none; }
+      #schedTable tbody{ display:block; }
       #schedTable tr{
-        display:grid; grid-template-columns:1fr auto;
-        grid-template-areas:"agent region" "date shift" "sysid sysid";
-        row-gap:6px; column-gap:12px; align-items:center;
-        background:var(--surface); border:1px solid var(--line);
-        border-radius:var(--radius); padding:13px 15px; margin-bottom:9px;
+        display:grid;
+        grid-template-columns:1fr auto;
+        grid-template-areas:
+          "agent region"
+          "date shift"
+          "sysid sysid";
+        row-gap:6px;
+        column-gap:12px;
+        align-items:center;
+        background:var(--surface);
+        border:1px solid var(--line);
+        border-radius:var(--radius);
+        padding:14px 16px;
+        margin-bottom:10px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.02);
       }
-      #schedTable td{display:block; padding:0; border:none; white-space:normal}
-      #schedTable td:nth-child(1){grid-area:date; font-size:12px; font-weight:600; color:var(--muted)}
-      #schedTable td:nth-child(2){grid-area:shift; font-size:12px; text-align:right}
+      #schedTable tr:last-child{ margin-bottom:0; }
+      #schedTable td{
+        display:block;
+        padding:0;
+        border-bottom:none;
+        white-space:normal;
+      }
+      #schedTable td:nth-child(1){ grid-area:date; font-family:var(--font-body); font-size:12.5px; font-weight:600; color:var(--muted); }
+      #schedTable td:nth-child(2){ grid-area:shift; font-size:12.5px; color:var(--muted); text-align:right; }
       #schedTable td:nth-child(3){
-        grid-area:sysid; font-size:11.5px; color:var(--faint);
-        padding-top:8px; border-top:1px dashed var(--line);
+        grid-area:sysid;
+        font-size:12px;
+        color:var(--faint);
+        padding-top:8px;
+        margin-top:2px;
+        border-top:1px dashed var(--line);
       }
-      #schedTable td:nth-child(4){grid-area:agent; font-size:14.5px; font-weight:700}
-      #schedTable td:nth-child(5){grid-area:region; justify-self:end}
-      .chart-bar .cl{min-width:76px; font-size:10.5px}
-      #toastHolder{left:14px; right:14px; bottom:14px}
+      #schedTable td:nth-child(4){ grid-area:agent; font-family:var(--font-display); font-size:16px; font-weight:600; color:var(--ink); }
+      #schedTable td:nth-child(5){ grid-area:region; justify-self:end; align-self:start; }
+      #schedTable .off-row{ opacity:0.75; }
     }
   </style>
 </head>
@@ -369,23 +571,11 @@
 <div class="wrap">
 
   <header class="top">
-    <div class="brand">
-      <div class="logo">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
-          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2.5"/>
-        </svg>
-      </div>
-      <div>
-        <h1>CSA Shift Roster</h1>
-        <div class="sub">Duty schedule &amp; agent assignments</div>
-      </div>
-    </div>
-    <div class="head-right">
-      <div class="live-clock" id="liveClock">--:--<span class="ampm">--</span></div>
-    </div>
-    <div class="updated" id="updatedAt"><span class="dot"></span>Connecting…</div>
+    <h1>Shift Schedule</h1>
+    <div class="updated" id="updatedAt">Loading…</div>
   </header>
 
+  <!-- Main Navigation Tabs -->
   <nav class="view-nav">
     <button class="nav-btn active" data-view="todayView">Today's Schedule</button>
     <button class="nav-btn" data-view="detailsView">All Entries</button>
@@ -394,109 +584,183 @@
 
   <!-- ========== TODAY VIEW ========== -->
   <div id="todayView">
+    <!-- Date Navigation Buttons -->
     <div class="date-nav" id="dateNav"></div>
-    <div class="hero-date" id="heroDate"></div>
-    <div class="hero-sub">Duty schedule for agents assigned on the selected date.</div>
+
+    <div class="hero-date" id="heroDate">Loading date…</div>
+    <div class="hero-sub">Duty schedule for agents assigned on the selected date is shown below.</div>
+    
     <div class="stat-row" id="statRow"></div>
+    
     <div id="groupsHolder"></div>
-    <div class="state-msg" id="stateMsgToday">Loading schedule…</div>
+    <div class="state-msg" id="stateMsgToday">Loading…</div>
   </div>
 
   <!-- ========== DETAILS VIEW ========== -->
   <div id="detailsView" style="display:none;">
     <div class="filters">
-      <div class="field"><label for="fMonth">Month</label><select id="fMonth"><option value="">All</option></select></div>
-      <div class="field"><label for="fRegion">Region</label><select id="fRegion"><option value="">All</option></select></div>
-      <div class="field"><label for="fShift">Shift</label><select id="fShift"><option value="">All</option></select></div>
-      <div class="field grow"><label for="fAgent">Search Agent / System ID</label><input type="text" id="fAgent" placeholder="e.g. Milon Hossain"></div>
-      <button class="reset-btn" id="clearBtn">Reset</button>
+      <div class="field">
+        <label for="fMonth">Month</label>
+        <select id="fMonth"><option value="">All</option></select>
+      </div>
+      <div class="field">
+        <label for="fRegion">Region</label>
+        <select id="fRegion"><option value="">All</option></select>
+      </div>
+      <div class="field">
+        <label for="fShift">Shift</label>
+        <select id="fShift"><option value="">All</option></select>
+      </div>
+      <div class="field grow">
+        <label for="fAgent">Search Agent Name / System ID</label>
+        <input type="text" id="fAgent" placeholder="e.g. Milon Hossain">
+      </div>
+      <button class="clear-btn" id="clearBtn">Reset</button>
     </div>
+
     <div class="summary" id="summary"></div>
+
     <div class="table-shell" id="schedTableShell">
       <table id="schedTable" style="display:none">
-        <thead><tr>
-          <th data-col="sortKey">Date <span class="arrow"></span></th>
-          <th data-col="shift">Shift <span class="arrow"></span></th>
-          <th data-col="systemId">System ID <span class="arrow"></span></th>
-          <th data-col="agentName">Agent <span class="arrow"></span></th>
-          <th data-col="region">Region <span class="arrow"></span></th>
-        </tr></thead>
+        <thead>
+          <tr><th>Date</th><th>Shift</th><th>System ID</th><th>Agent Name</th><th>Region</th></tr>
+        </thead>
         <tbody id="tbodyDetails"></tbody>
       </table>
       <div class="state-msg" id="stateMsgDetails">Loading…</div>
     </div>
   </div>
 
-  <!-- ========== AGENT VIEW ========== -->
+  <!-- ========== AGENT HISTORY VIEW ========== -->
   <div id="agentView" style="display:none;">
     <div class="filters">
-      <div class="field grow"><label for="agentSelect">Select Agent</label><select id="agentSelect"><option value="">Loading agents…</option></select></div>
-      <div class="field"><label for="startDate">Start Date</label><input type="date" id="startDate"></div>
-      <div class="field"><label for="endDate">End Date</label><input type="date" id="endDate"></div>
+      <div class="field grow">
+        <label for="agentSelect">Select Agent</label>
+        <select id="agentSelect"><option value="">Loading agents...</option></select>
+      </div>
+      <div class="field">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate">
+      </div>
+      <div class="field">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate">
+      </div>
+      <div class="field">
+        <label for="kpiSelect">KPI Category</label>
+        <select id="kpiSelect">
+          <option value="">None</option>
+          <option value="A">A — ৳2700</option>
+          <option value="B">B — ৳2000</option>
+          <option value="C">C — ৳700</option>
+        </select>
+      </div>
       <button class="reset-btn" id="resetBtn">Reset Filters</button>
     </div>
 
+    <div class="stats-grid" id="salaryGrid" style="display:none;">
+      <div class="stat-card success">
+        <span class="label">Duty Days Pay</span>
+        <span class="value" id="salaryDutyPay">৳0</span>
+        <span class="sub" id="salaryDutySub">0 days × ৳490</span>
+      </div>
+      <div class="stat-card highlight">
+        <span class="label">Travel Allowance</span>
+        <span class="value" id="salaryTravel">৳0</span>
+        <span class="sub" id="salaryTravelSub">Based on shift timing</span>
+      </div>
+      <div class="stat-card warning">
+        <span class="label">KPI Bonus</span>
+        <span class="value" id="salaryKPI">৳0</span>
+        <span class="sub" id="salaryKPISub">No category selected</span>
+      </div>
+      <div class="stat-card neutral">
+        <span class="label">Grand Total</span>
+        <span class="value" id="salaryTotal">৳0</span>
+        <span class="sub">Salary + travel + KPI</span>
+      </div>
+    </div>
+
     <div class="stats-grid" id="statsGrid" style="display:none;">
-      <div class="stat-card success"><span class="label">Total Duty Days</span><div class="value" id="statDutyDays">0</div><div class="sub">Within selected range</div></div>
-      <div class="stat-card neutral"><span class="label">Total Off Days</span><div class="value" id="statOffDays">0</div><div class="sub">Total days minus duty days</div></div>
-      <div class="stat-card highlight"><span class="label">Most Frequent Shift</span><div class="value" id="statTopShift" style="font-size:17px">N/A</div><div class="sub" id="statTopShiftCount">No shifts worked</div></div>
-      <div class="stat-card warning"><span class="label">Regions Worked</span><div class="value" id="statRegions" style="font-size:17px">N/A</div><div class="sub">Active regions</div></div>
+      <div class="stat-card success">
+        <span class="label">Total Duty Days</span>
+        <span class="value" id="statDutyDays">0</span>
+        <span class="sub">Within selected range</span>
+      </div>
+      <div class="stat-card neutral">
+        <span class="label">Total Off Days</span>
+        <span class="value" id="statOffDays">0</span>
+        <span class="sub">Total days minus duty days</span>
+      </div>
+      <div class="stat-card highlight">
+        <span class="label">Most Frequent Shift</span>
+        <span class="value" id="statTopShift" style="font-size:20px;">N/A</span>
+        <span class="sub" id="statTopShiftCount">No shifts worked</span>
+      </div>
+      <div class="stat-card warning">
+        <span class="label">Regions Worked</span>
+        <span class="value" id="statRegions" style="font-size:20px;">N/A</span>
+        <span class="sub">Active regions</span>
+      </div>
     </div>
 
-    <div class="chart-card" id="chartCard" style="display:none;">
-      <h3>Shift Distribution</h3>
-      <div id="chartHolder"></div>
-    </div>
-
-    <div id="tableSection" style="display:none;">
-      <div class="table-header">Shift History <span class="badge" id="resultCount">0 entries</span></div>
+    <div id="tableSection" style="display:none; margin-top:36px;">
+      <div class="table-header">
+        Shift History <span class="badge" id="resultCount">0 entries</span>
+      </div>
       <div class="table-shell">
         <table id="historyTable">
-          <thead><tr><th>Date</th><th>Day</th><th>Shift</th><th>Region</th><th>System ID</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Shift</th>
+              <th>Region</th>
+              <th>System ID</th>
+            </tr>
+          </thead>
           <tbody id="tbodyAgent"></tbody>
         </table>
       </div>
     </div>
+
     <div class="state-msg" id="stateMsgAgent">Please select an agent to view their shift history.</div>
   </div>
 
   <footer class="note">
-    No login required — everyone can view this. Data auto-refreshes every 5 minutes.
+    No login required — everyone can view this. Refresh the page after changes in the Sheet to see updated data.
   </footer>
 </div>
-<div id="toastHolder"></div>
 
 <script>
+  /* ==============================================================
+     SHARED LOGIC & CONFIG
+     ============================================================== */
   const CONFIG = {
     SHEET_ID: "1qIhXOv2jU2pQagJbzkYms1vAQ9JPtAhwSNmibGfFZS4",
     SHEET_NAME: "Schedule",
-    REFRESH_MS: 300000
+    REFRESH_MS: 300000 // 5 minutes
   };
 
   const csvUrl = () =>
     `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(CONFIG.SHEET_NAME)}&_=${Date.now()}`;
 
-  /* ============ HELPERS ============ */
-  function esc(s){
-    return String(s ?? '').replace(/[&<>"']/g, c => ({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-    }[c]));
-  }
-
+  // ---- Custom CSV Parser ----
   function parseCSV(text){
-    const rows = []; let row = [], field = '', inQ = false;
+    const rows = [];
+    let row = [], field = '', inQuotes = false;
     for(let i=0;i<text.length;i++){
-      const c = text[i], n = text[i+1];
-      if(inQ){
-        if(c==='"' && n==='"'){ field+='"'; i++; }
-        else if(c==='"'){ inQ=false; }
-        else{ field+=c; }
+      const c = text[i], next = text[i+1];
+      if(inQuotes){
+        if(c === '"' && next === '"'){ field += '"'; i++; }
+        else if(c === '"'){ inQuotes = false; }
+        else{ field += c; }
       } else {
-        if(c==='"'){ inQ=true; }
-        else if(c===','){ row.push(field); field=''; }
-        else if(c==='\n'){ row.push(field); rows.push(row); row=[]; field=''; }
-        else if(c==='\r'){ /* skip */ }
-        else{ field+=c; }
+        if(c === '"'){ inQuotes = true; }
+        else if(c === ','){ row.push(field); field=''; }
+        else if(c === '\n'){ row.push(field); rows.push(row); row=[]; field=''; }
+        else if(c === '\r'){ /* skip */ }
+        else{ field += c; }
       }
     }
     if(field.length || row.length){ row.push(field); rows.push(row); }
@@ -505,42 +769,50 @@
 
   function normalizeDate(raw){
     if(!raw) return {sortKey:'', display:'', dayName:'', month:''};
-    raw = raw.trim(); let d;
-    const m = raw.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{2,4})$/);
+    raw = raw.trim();
+    let d;
+    let m = raw.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{2,4})$/);
     if(m){
-      const mm = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
-      const yr = m[3].length===2 ? 2000+parseInt(m[3]) : parseInt(m[3]);
-      d = new Date(yr, mm[m[2]], parseInt(m[1]));
-    } else { d = new Date(raw); }
+      const monthMap = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+      let yr = m[3].length===2 ? 2000+parseInt(m[3]) : parseInt(m[3]);
+      d = new Date(yr, monthMap[m[2]], parseInt(m[1]));
+    } else {
+      d = new Date(raw);
+    }
     if(isNaN(d)) return {sortKey:raw, display:raw, dayName:'', month:''};
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    
     const dd = String(d.getDate()).padStart(2,'0');
+    const monthsEn = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const daysEn = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    
     return {
       sortKey: `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${dd}`,
-      display: `${dd} ${months[d.getMonth()]} ${d.getFullYear()}`,
-      dayName: days[d.getDay()],
-      month: `${months[d.getMonth()]} ${d.getFullYear()}`
+      display: `${dd} ${monthsEn[d.getMonth()]} ${d.getFullYear()}`,
+      dayName: daysEn[d.getDay()],
+      month: `${monthsEn[d.getMonth()]} ${d.getFullYear()}`
     };
   }
 
-  const keyOf = d =>
-    `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  function getSortKeyFromDate(d) {
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
 
   function regionPillClass(region){
     const r = (region||'').trim().toUpperCase();
-    if(r==='EU') return 'eu';
-    if(r==='GLO'||r==='GLOBAL') return 'glo';
-    if(r==='UDP') return 'udp';
-    if(r==='OFF') return 'off';
+    if(r === 'EU') return 'eu';
+    if(r === 'GLO' || r === 'GLOBAL') return 'glo';
+    if(r === 'UDP') return 'udp';
+    if(r === 'OFF') return 'off';
     return 'other';
   }
 
   async function fetchScheduleRows(){
     const res = await fetch(csvUrl());
     if(!res.ok) throw new Error('fetch failed');
-    const rows = parseCSV(await res.text());
+    const text = await res.text();
+    const rows = parseCSV(text);
     if(rows.length < 2) throw new Error('empty sheet');
+
     const header = rows[0].map(h => h.trim().toLowerCase());
     const idx = {
       date: header.findIndex(h => h.includes('date')),
@@ -549,432 +821,546 @@
       agentName: header.findIndex(h => h.includes('agent')),
       region: header.findIndex(h => h.includes('region')),
     };
-    if(idx.date===-1 || idx.agentName===-1) throw new Error('Sheet missing required columns');
+
     return rows.slice(1).map(r => {
-      const di = normalizeDate(r[idx.date] || '');
+      const dateInfo = normalizeDate(r[idx.date] || '');
       return {
-        sortKey: di.sortKey, display: di.display, dayName: di.dayName, month: di.month,
-        shift: (r[idx.shift]||'').trim(), systemId: (r[idx.systemId]||'').trim(),
-        agentName: (r[idx.agentName]||'').trim(), region: (r[idx.region]||'').trim(),
+        sortKey: dateInfo.sortKey,
+        display: dateInfo.display,
+        dayName: dateInfo.dayName,
+        month: dateInfo.month,
+        shift: (r[idx.shift] || '').trim(),
+        systemId: (r[idx.systemId] || '').trim(),
+        agentName: (r[idx.agentName] || '').trim(),
+        region: (r[idx.region] || '').trim(),
       };
     }).filter(r => r.agentName || r.systemId);
   }
 
-  /* ============ STATE ============ */
+  /* ========== GLOBAL STATE & DATA ========== */
   let ALL_ROWS = [];
-  let SELECTED_SORT_KEY = keyOf(new Date());
-  let DETAIL_SORT = { col:'sortKey', dir:1 };
+  let SELECTED_SORT_KEY = getSortKeyFromDate(new Date()); // Defaults to today
 
-  /* ============ TOAST ============ */
-  function toast(msg, isErr=false){
-    const holder = document.getElementById('toastHolder');
-    const t = document.createElement('div');
-    t.className = 'toast' + (isErr ? ' err' : '');
-    t.textContent = msg;
-    holder.appendChild(t);
-    setTimeout(() => t.remove(), 3800);
-  }
-
-  /* ============ LIVE CLOCK — 12-HOUR FORMAT ============ */
-  const clockEl = document.getElementById('liveClock');
-  function tickClock(){
-    const n = new Date();
-    let h = n.getHours();
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    h = h % 12; if(h === 0) h = 12;          // 0 → 12 AM, 13 → 1 PM
-    const m = String(n.getMinutes()).padStart(2,'0');
-    const s = String(n.getSeconds()).padStart(2,'0');
-    clockEl.innerHTML = `${String(h).padStart(2,'0')}:${m}:${s}<span class="ampm">${ampm}</span>`;
-  }
-  tickClock(); setInterval(tickClock, 1000);
-
-  /* ============ VIEW SWITCHER ============ */
+  /* ========== VIEW SWITCHER ========== */
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const t = btn.getAttribute('data-view');
-      ['todayView','detailsView','agentView'].forEach(id =>
-        document.getElementById(id).style.display = (id===t ? 'block' : 'none')
-      );
+      
+      const targetId = btn.getAttribute('data-view');
+      document.getElementById('todayView').style.display = targetId === 'todayView' ? 'block' : 'none';
+      document.getElementById('detailsView').style.display = targetId === 'detailsView' ? 'block' : 'none';
+      document.getElementById('agentView').style.display = targetId === 'agentView' ? 'block' : 'none';
     });
   });
 
-  /* ============ TODAY VIEW ============ */
+  /* ========== TODAY VIEW RENDER ========== */
   const monthsEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const weekdaysEn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const monthsShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const daysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-  function renderDateNav(){
-    const today = new Date(), dates = [];
-    for(let i=-7;i<=14;i++){ const d = new Date(today); d.setDate(today.getDate()+i); dates.push(d); }
-    const el = document.getElementById('dateNav');
-    el.innerHTML = dates.map(d => {
-      const k = keyOf(d);
-      return `<button class="date-btn ${k===SELECTED_SORT_KEY?'active':''} ${k===keyOf(today)?'today':''}" data-key="${k}">
-        <span class="m">${monthsShort[d.getMonth()]}</span>
+  const monthsShortEn = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const weekdaysShortEn = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function renderDateNav() {
+    const today = new Date();
+    const dates = [];
+    // 7 days back through 14 days ahead, for a scrollable strip
+    for(let i = -7; i <= 14; i++) {
+      const d = new Date(today);
+      d.setDate(today.getDate() + i);
+      dates.push(d);
+    }
+
+    const dateNavEl = document.getElementById('dateNav');
+    dateNavEl.innerHTML = dates.map(d => {
+      const key = getSortKeyFromDate(d);
+      const isActive = key === SELECTED_SORT_KEY ? 'active' : '';
+      return `<button class="date-btn ${isActive}" data-key="${key}">
+        <span class="m">${monthsShortEn[d.getMonth()]}</span>
         <span class="d">${d.getDate()}</span>
-        <span class="w">${daysShort[d.getDay()]}</span>
+        <span class="w">${weekdaysShortEn[d.getDay()]}</span>
       </button>`;
     }).join('');
-    el.querySelectorAll('.date-btn').forEach(btn => {
+
+    // Attach event listeners
+    document.querySelectorAll('.date-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         SELECTED_SORT_KEY = btn.dataset.key;
-        renderDateNav(); renderTodayView();
+        renderDateNav(); // Update active state
+        renderTodayView(); // Re-render stats and groups
       });
     });
-    const a = el.querySelector('.date-btn.active');
-    if(a) a.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+
+    // Keep the selected date scrolled into view
+    const activeBtn = dateNavEl.querySelector('.date-btn.active');
+    if(activeBtn) activeBtn.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
   }
 
   function renderHeroDate(){
     const d = new Date(SELECTED_SORT_KEY + 'T00:00:00');
     if(isNaN(d)) return;
-    document.getElementById('heroDate').textContent =
+    document.getElementById('heroDate').innerHTML =
       `${weekdaysEn[d.getDay()]}, ${d.getDate()} ${monthsEn[d.getMonth()]} ${d.getFullYear()}`;
   }
 
-  function renderStats(rows){
-    const c = {eu:0, glo:0, udp:0};
-    rows.forEach(r => {
-      if(/^off$/i.test(r.shift)) return;
+  function renderStats(targetRows){
+    const counts = {eu:0, glo:0, udp:0};
+    targetRows.forEach(r => {
+      if(/^off$/i.test(r.shift.trim())) return; // Skip OFF shifts
       const cls = regionPillClass(r.region);
-      if(c[cls] !== undefined) c[cls]++;
+      if(counts[cls] !== undefined) counts[cls]++;
     });
+    
+    // OFF card removed as per request
     document.getElementById('statRow').innerHTML = `
-      <div class="stat-chip eu"><span class="n">${c.eu}</span><span class="l">On duty in EU</span></div>
-      <div class="stat-chip glo"><span class="n">${c.glo}</span><span class="l">On duty in GLO</span></div>
-      <div class="stat-chip udp"><span class="n">${c.udp}</span><span class="l">On duty in UDP</span></div>`;
+      <div class="stat-chip eu"><span class="n">${counts.eu}</span><span class="l">On duty in EU</span></div>
+      <div class="stat-chip glo"><span class="n">${counts.glo}</span><span class="l">On duty in GLO</span></div>
+      <div class="stat-chip udp"><span class="n">${counts.udp}</span><span class="l">On duty in UDP</span></div>
+    `;
   }
 
-  function renderGroups(rows){
+  function renderGroups(targetRows){
     const holder = document.getElementById('groupsHolder');
-    const msg = document.getElementById('stateMsgToday');
-    if(rows.length === 0){
+    const stateMsg = document.getElementById('stateMsgToday');
+
+    if(targetRows.length === 0){
       holder.innerHTML = '';
-      msg.style.display = 'block';
-      msg.textContent = 'No schedule entries found for this date.';
+      stateMsg.style.display = 'block';
+      stateMsg.textContent = 'No schedule entries found for this date.';
       return;
     }
-    msg.style.display = 'none';
+    stateMsg.style.display = 'none';
+
     const groups = {};
-    rows.forEach(r => {
-      const k = r.shift.trim() || '(Shift not filled)';
-      (groups[k] = groups[k] || []).push(r);
+    targetRows.forEach(r => {
+      const key = r.shift.trim() || '(Shift not filled)';
+      if(!groups[key]) groups[key] = [];
+      groups[key].push(r);
     });
+
     const keys = Object.keys(groups).sort((a,b) => {
-      const ao = /^off$/i.test(a), bo = /^off$/i.test(b);
-      if(ao && !bo) return 1; if(bo && !ao) return -1;
+      const aOff = /^off$/i.test(a), bOff = /^off$/i.test(b);
+      if(aOff && !bOff) return 1;
+      if(bOff && !aOff) return -1;
       return a.localeCompare(b);
     });
+
     holder.innerHTML = keys.map(key => {
       const isOff = /^off$/i.test(key);
-      const rs = groups[key].sort((a,b) => a.agentName.localeCompare(b.agentName));
+      const rows = groups[key].sort((a,b) => a.agentName.localeCompare(b.agentName));
       return `
-      <div class="shift-group ${isOff?'off-group':''}">
-        <div class="shift-group-header">
-          <span class="name"><span class="shift-time">${esc(key)}</span></span>
-          <span class="count">${rs.length} agent${rs.length!==1?'s':''}</span>
+        <div class="shift-group ${isOff ? 'off-group' : ''}">
+          <div class="shift-group-header">
+            <span class="name">${key}</span>
+            <span class="count">${rows.length} agents</span>
+          </div>
+          <div class="agent-list">
+            ${rows.map(r => {
+              const hasName = r.agentName && r.agentName.trim().toUpperCase() !== 'N/A';
+              const displayName = hasName ? r.agentName : r.systemId;
+              const showId = r.systemId && r.systemId !== displayName && r.systemId.trim().toUpperCase() !== 'N/A';
+              const initials = displayName.trim().split(/\s+/).slice(0,2).map(w => w[0]).join('').toUpperCase();
+              const regionCls = regionPillClass(r.region);
+              return `
+              <div class="agent-row">
+                <span class="avatar ${regionCls}">${initials}</span>
+                <span class="agent-info">
+                  <span class="name">${displayName}</span>
+                  ${showId ? `<span class="sysid">ID: ${r.systemId}</span>` : ''}
+                </span>
+                <span class="pill ${regionCls}">${r.region}</span>
+              </div>
+            `;}).join('')}
+          </div>
         </div>
-        <div class="agent-list">
-          ${rs.map(r => {
-            const hasName = r.agentName && r.agentName.toUpperCase() !== 'N/A';
-            const dn = hasName ? r.agentName : r.systemId;
-            const showId = r.systemId && r.systemId !== dn && r.systemId.toUpperCase() !== 'N/A';
-            const ini = esc(dn.trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase());
-            const cls = regionPillClass(r.region);
-            return `<div class="agent-row">
-              <span class="avatar ${cls}">${ini}</span>
-              <span class="agent-info">
-                <span class="name">${esc(dn)}</span>
-                ${showId ? `<span class="sysid">ID: ${esc(r.systemId)}</span>` : ''}
-              </span>
-              <span class="pill ${cls}">${esc(r.region)}</span>
-            </div>`;
-          }).join('')}
-        </div>
-      </div>`;
+      `;
     }).join('');
   }
 
-  function renderTodayView(){
+  function renderTodayView() {
     renderHeroDate();
-    const rows = ALL_ROWS.filter(r => r.sortKey === SELECTED_SORT_KEY);
-    renderStats(rows);
-    renderGroups(rows);
+    const targetRows = ALL_ROWS.filter(r => r.sortKey === SELECTED_SORT_KEY);
+    renderStats(targetRows);
+    renderGroups(targetRows);
   }
 
-  /* ============ DETAILS VIEW ============ */
+  /* ========== DETAILS VIEW RENDER ========== */
   function populateSelect(id, values){
     const el = document.getElementById(id);
-    const cur = el.value;
+    const current = el.value;
     el.innerHTML = '<option value="">All</option>' +
-      values.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
-    if(values.includes(cur)) el.value = cur;
+      values.map(v => `<option value="${v}">${v}</option>`).join('');
+    if(values.includes(current)) el.value = current;
   }
 
   function renderDetails(){
     const month = document.getElementById('fMonth').value;
     const region = document.getElementById('fRegion').value;
     const shift = document.getElementById('fShift').value;
-    const q = document.getElementById('fAgent').value.trim().toLowerCase();
+    const agentQ = document.getElementById('fAgent').value.trim().toLowerCase();
 
     let rows = ALL_ROWS.filter(r => {
       if(month && r.month !== month) return false;
       if(region && r.region !== region) return false;
       if(shift && r.shift !== shift) return false;
-      if(q && !(r.agentName.toLowerCase().includes(q) || r.systemId.toLowerCase().includes(q))) return false;
+      if(agentQ && !(r.agentName.toLowerCase().includes(agentQ) || r.systemId.toLowerCase().includes(agentQ))) return false;
       return true;
     });
 
-    const c = DETAIL_SORT.col, dir = DETAIL_SORT.dir;
-    rows.sort((a,b) => (a[c]||'').localeCompare(b[c]||'') * dir);
+    rows.sort((a,b) => a.sortKey.localeCompare(b.sortKey) || a.shift.localeCompare(b.shift));
 
     const tbody = document.getElementById('tbodyDetails');
     const table = document.getElementById('schedTable');
-    const msg = document.getElementById('stateMsgDetails');
+    const stateMsg = document.getElementById('stateMsgDetails');
 
     if(rows.length === 0){
       table.style.display = 'none';
-      msg.style.display = 'block';
-      msg.textContent = 'No data found — try changing the filters.';
+      stateMsg.style.display = 'block';
+      stateMsg.textContent = 'No data found — try changing the filters.';
     } else {
       table.style.display = 'table';
-      msg.style.display = 'none';
+      stateMsg.style.display = 'none';
       tbody.innerHTML = rows.map(r => {
-        const isOff = /^off$/i.test(r.shift);
-        return `<tr class="${isOff?'off-row':''}">
-          <td>${esc(r.display)}</td>
-          <td class="shift-cell">${isOff ? 'OFF' : esc(r.shift)}</td>
-          <td>${esc(r.systemId)}</td>
-          <td>${esc(r.agentName)}</td>
-          <td><span class="pill ${regionPillClass(r.region)}">${esc(r.region)}</span></td>
+        const isOff = /^off$/i.test(r.shift.trim());
+        return `<tr class="${isOff ? 'off-row' : ''}">
+          <td>${r.display}</td>
+          <td>${isOff ? '<span class="off-tag">OFF</span>' : r.shift}</td>
+          <td>${r.systemId}</td>
+          <td>${r.agentName}</td>
+          <td><span class="pill ${regionPillClass(r.region)}">${r.region}</span></td>
         </tr>`;
       }).join('');
     }
 
     document.getElementById('summary').innerHTML =
-      `Showing <b>${rows.length}</b> entries${q ? ` for "${esc(document.getElementById('fAgent').value.trim())}"` : ''}`;
+      `Showing <b>${rows.length}</b> entries total${agentQ ? ` — for "${document.getElementById('fAgent').value.trim()}"` : ''}`;
   }
 
-  document.querySelectorAll('#schedTable thead th').forEach(th => {
-    th.addEventListener('click', () => {
-      const col = th.dataset.col;
-      if(DETAIL_SORT.col === col) DETAIL_SORT.dir *= -1;
-      else { DETAIL_SORT.col = col; DETAIL_SORT.dir = 1; }
-      document.querySelectorAll('#schedTable thead th .arrow').forEach(a => a.textContent = '');
-      th.querySelector('.arrow').textContent = DETAIL_SORT.dir === 1 ? '▲' : '▼';
-      renderDetails();
+  /* ========== SALARY CALCULATION ========== */
+  const SALARY_PER_DAY = 490;
+  const KPI_VALUES = { '': 0, A: 2700, B: 2000, C: 700 };
+  const KPI_LABELS = { '': 'No category selected', A: 'Category A selected', B: 'Category B selected', C: 'Category C selected' };
+
+  // Parses a single time token like "10pm", "10:30pm", "5am", "22:00" -> minutes since midnight (0-1439)
+  function parseTimeToken(token){
+    if(!token) return null;
+    token = token.trim();
+    const m = token.match(/^(\d{1,2})(?:[:.](\d{2}))?\s*([APap][Mm])?$/);
+    if(!m) return null;
+    let hour = parseInt(m[1], 10);
+    const minute = m[2] ? parseInt(m[2], 10) : 0;
+    const ampm = m[3] ? m[3].toLowerCase() : null;
+    if(ampm){
+      if(hour === 12) hour = 0;
+      if(ampm === 'pm') hour += 12;
+    } else {
+      if(hour === 24) hour = 0;
+    }
+    if(hour < 0 || hour > 23 || minute < 0 || minute > 59) return null;
+    return hour * 60 + minute;
+  }
+
+  // Parses a shift string like "1pm-10pm" or "10pm-7am" into {startMin, endMin}
+  function parseShiftRange(shiftStr){
+    if(!shiftStr) return null;
+    const parts = shiftStr.split(/-|–|to/i).map(s => s.trim()).filter(Boolean);
+    if(parts.length < 2) return null;
+    let startMin = parseTimeToken(parts[0]);
+    let endMin = parseTimeToken(parts[1]);
+    // If start has no am/pm but end does, try inheriting end's meridiem info isn't reliable enough — leave as-is.
+    if(startMin === null || endMin === null) return null;
+    return { startMin, endMin };
+  }
+
+  // Travel allowance rules:
+  //  - Shift ending exactly at 10:00 PM -> 45 tk
+  //  - Shift starting or ending anywhere from 10:01 PM to 5:00 AM -> 115 tk
+  //  - Any other shift -> 0
+  function computeTravelAllowance(shiftStr){
+    const range = parseShiftRange(shiftStr);
+    if(!range) return 0;
+    const { startMin, endMin } = range;
+    const NIGHT_START = 22 * 60 + 1; // 10:01 PM
+    const NIGHT_END = 5 * 60;        // 5:00 AM
+    const inNightWindow = (m) => m >= NIGHT_START || m <= NIGHT_END;
+
+    if(endMin === 22 * 60){ // exactly 10:00 PM end
+      return 45;
+    }
+    if(inNightWindow(startMin) || inNightWindow(endMin)){
+      return 115;
+    }
+    return 0;
+  }
+
+  function fmtTk(n){
+    return '৳' + n.toLocaleString('en-US');
+  }
+
+  function renderSalary(filtered){
+    const salaryGrid = document.getElementById('salaryGrid');
+    const kpiCategory = document.getElementById('kpiSelect').value;
+
+    let dutyDaysWorked = 0;
+    let travelTotal = 0;
+
+    filtered.forEach(r => {
+      const isOff = r.shift.trim().toUpperCase() === 'OFF';
+      if(!isOff){
+        dutyDaysWorked++;
+        travelTotal += computeTravelAllowance(r.shift);
+      }
     });
-  });
 
-  /* ============ AGENT VIEW ============ */
-  function populateAgents(preserve){
-    const select = document.getElementById('agentSelect');
-    const cur = preserve ? select.value : '';
-    const names = [...new Set(ALL_ROWS.map(r => r.agentName))].filter(Boolean).sort();
-    select.innerHTML = '<option value="">— Select Agent —</option>' +
-      names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
-    if(names.includes(cur)) select.value = cur;
+    const dutyPayTotal = dutyDaysWorked * SALARY_PER_DAY;
+    const kpiBonus = KPI_VALUES[kpiCategory] || 0;
+    const grandTotal = dutyPayTotal + travelTotal + kpiBonus;
+
+    document.getElementById('salaryDutyPay').textContent = fmtTk(dutyPayTotal);
+    document.getElementById('salaryDutySub').textContent = `${dutyDaysWorked} days × ৳${SALARY_PER_DAY}`;
+    document.getElementById('salaryTravel').textContent = fmtTk(travelTotal);
+    document.getElementById('salaryKPI').textContent = fmtTk(kpiBonus);
+    document.getElementById('salaryKPISub').textContent = KPI_LABELS[kpiCategory] || 'No category selected';
+    document.getElementById('salaryTotal').textContent = fmtTk(grandTotal);
+
+    salaryGrid.style.display = 'grid';
   }
 
-  function fmtDate(d){
-    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  /* ========== AGENT HISTORY VIEW RENDER ========== */
+  function populateAgents(){
+    const agentNames = [...new Set(ALL_ROWS.map(r => r.agentName))].filter(Boolean).sort();
+    const select = document.getElementById('agentSelect');
+    select.innerHTML = '<option value="">-- Select Agent --</option>' + 
+      agentNames.map(name => `<option value="${name}">${name}</option>`).join('');
   }
 
   function setDefaultDates(){
     const today = new Date();
-    let y = today.getFullYear(), m = today.getMonth();
-    if(today.getDate() < 16){ m -= 1; if(m < 0){ m = 11; y -= 1; } }
-    document.getElementById('startDate').value = fmtDate(new Date(y, m, 15));
-    document.getElementById('endDate').value = fmtDate(today);
-  }
+    const formatStr = (d) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 
-  function renderChart(shiftCounts){
-    const holder = document.getElementById('chartCard');
-    const entries = Object.entries(shiftCounts).sort((a,b) => b[1]-a[1]).slice(0,8);
-    if(entries.length === 0){ holder.style.display = 'none'; return; }
-    const max = entries[0][1];
-    document.getElementById('chartHolder').innerHTML = entries.map(([s,n]) => `
-      <div class="chart-bar">
-        <span class="cl">${esc(s)}</span>
-        <span class="track"><span class="fill" style="--w:${Math.max(4,(n/max)*100)}%"></span></span>
-        <span class="val">${n}</span>
-      </div>`).join('');
-    holder.style.display = 'block';
+    // Start date default: 15th of previous month.
+    // Once the 16th of the current month has passed, default becomes the 15th of the current month.
+    let startYear = today.getFullYear();
+    let startMonth = today.getMonth();
+    if(today.getDate() < 16){
+      startMonth -= 1; // go to previous month
+      if(startMonth < 0){ startMonth = 11; startYear -= 1; }
+    }
+    const startDay = new Date(startYear, startMonth, 15);
+
+    document.getElementById('startDate').value = formatStr(startDay);
+    document.getElementById('endDate').value = formatStr(today);
   }
 
   function renderHistory(){
     const agent = document.getElementById('agentSelect').value;
-    const startStr = document.getElementById('startDate').value;
-    const endStr = document.getElementById('endDate').value;
+    const startDateStr = document.getElementById('startDate').value;
+    const endDateStr = document.getElementById('endDate').value;
+    
     const statsGrid = document.getElementById('statsGrid');
     const tableSection = document.getElementById('tableSection');
-    const msg = document.getElementById('stateMsgAgent');
+    const stateMsg = document.getElementById('stateMsgAgent');
 
     if(!agent){
       statsGrid.style.display = 'none';
+      document.getElementById('salaryGrid').style.display = 'none';
       tableSection.style.display = 'none';
-      document.getElementById('chartCard').style.display = 'none';
-      msg.style.display = 'block';
-      msg.classList.remove('error');
-      msg.textContent = 'Please select an agent to view their shift history.';
+      stateMsg.style.display = 'block';
+      stateMsg.textContent = 'Please select an agent to view their shift history.';
+      stateMsg.classList.remove('error');
       return;
     }
 
-    const filtered = ALL_ROWS.filter(r =>
-      r.agentName === agent &&
-      (!startStr || r.sortKey >= startStr) &&
-      (!endStr || r.sortKey <= endStr)
-    );
+    let filtered = ALL_ROWS.filter(r => {
+      if(r.agentName !== agent) return false;
+      if(startDateStr && r.sortKey < startDateStr) return false;
+      if(endDateStr && r.sortKey > endDateStr) return false;
+      return true;
+    });
 
-    const rowMap = new Map(filtered.map(r => [r.sortKey, r]));
-
+    // Calculate duty days and stats based on existing filtered records
     let dutyDays = 0;
-    const shiftCounts = {};
-    const regions = new Set();
+    let shiftCounts = {};
+    let regions = new Set();
+    
     filtered.forEach(r => {
-      if(!/^off$/i.test(r.shift)){
+      const isOff = r.shift.trim().toUpperCase() === 'OFF';
+      if(!isOff) {
         dutyDays++;
-        shiftCounts[r.shift] = (shiftCounts[r.shift]||0)+1;
+        shiftCounts[r.shift] = (shiftCounts[r.shift] || 0) + 1;
         if(r.region) regions.add(r.region);
       }
     });
 
-    const start = new Date(startStr + 'T00:00:00');
-    const end = new Date(endStr + 'T00:00:00');
-    const tableRows = [];
-    let totalDays = 0;
+    // Calculate total days in range
+    let totalDaysInRange = 0;
+    const start = new Date(startDateStr + 'T00:00:00');
+    const end = new Date(endDateStr + 'T00:00:00');
 
-    if(isNaN(start) || isNaN(end)){
-      tableRows.push(...filtered);
-      totalDays = filtered.length;
+    if (!isNaN(start) && !isNaN(end)) {
+      const diffTime = Math.abs(end - start);
+      totalDaysInRange = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 to include start date
     } else {
-      let cur = new Date(start);
-      while(cur <= end){
-        totalDays++;
-        const k = keyOf(cur);
-        const found = rowMap.get(k);
-        if(found) tableRows.push(found);
-        else {
-          const dd = String(cur.getDate()).padStart(2,'0');
-          tableRows.push({
-            sortKey:k, display:`${dd} ${monthsShort[cur.getMonth()]} ${cur.getFullYear()}`,
-            dayName:daysShort[cur.getDay()], shift:'OFF', region:'-', systemId:'-'
-          });
-        }
-        cur.setDate(cur.getDate()+1);
-      }
+      totalDaysInRange = filtered.length; // fallback
     }
 
-    let offDays = Math.max(0, totalDays - dutyDays);
-    let topShift = 'N/A', maxCount = 0;
-    for(const s in shiftCounts){
-      if(shiftCounts[s] > maxCount){ maxCount = shiftCounts[s]; topShift = s; }
+    let offDays = totalDaysInRange - dutyDays;
+    if (offDays < 0) offDays = 0;
+
+    let topShift = 'N/A';
+    let maxCount = 0;
+    for(let s in shiftCounts){
+      if(shiftCounts[s] > maxCount){
+        maxCount = shiftCounts[s];
+        topShift = s;
+      }
     }
 
     document.getElementById('statDutyDays').textContent = dutyDays;
     document.getElementById('statOffDays').textContent = offDays;
     document.getElementById('statTopShift').textContent = topShift;
-    document.getElementById('statTopShiftCount').textContent =
-      maxCount > 0 ? `Worked ${maxCount} times` : 'No shifts worked';
-    document.getElementById('statRegions').textContent =
-      regions.size > 0 ? [...regions].join(', ') : 'None';
+    document.getElementById('statTopShiftCount').textContent = maxCount > 0 ? `Worked ${maxCount} times` : 'No shifts worked';
+    document.getElementById('statRegions').textContent = regions.size > 0 ? Array.from(regions).join(', ') : 'None';
     statsGrid.style.display = 'grid';
 
-    renderChart(shiftCounts);
+    renderSalary(filtered);
 
-    if(tableRows.length === 0){
-      statsGrid.style.display = 'none';
-      document.getElementById('chartCard').style.display = 'none';
-      tableSection.style.display = 'none';
-      msg.style.display = 'block';
-      msg.textContent = `No records found for ${agent} in the selected range.`;
-      return;
+    // --- CODE TO ADD MISSING DAYS AS "OFF" ---
+    let tableRows = [];
+
+    if (isNaN(start) || isNaN(end)) {
+      tableRows = filtered;
+    } else {
+      let current = new Date(start);
+      const monthsEn = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const daysEn = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      
+      while(current <= end) {
+        let sortKey = `${current.getFullYear()}-${String(current.getMonth()+1).padStart(2,'0')}-${String(current.getDate()).padStart(2,'0')}`;
+        let found = filtered.find(r => r.sortKey === sortKey);
+        
+        if (found) {
+          tableRows.push(found);
+        } else {
+          const dd = String(current.getDate()).padStart(2,'0');
+          tableRows.push({
+            sortKey: sortKey,
+            display: `${dd} ${monthsEn[current.getMonth()]} ${current.getFullYear()}`,
+            dayName: daysEn[current.getDay()],
+            shift: 'OFF',
+            region: '-',
+            systemId: '-'
+          });
+        }
+        current.setDate(current.getDate() + 1);
+      }
     }
 
-    document.getElementById('resultCount').textContent = `${tableRows.length} entries`;
-    document.getElementById('tbodyAgent').innerHTML = tableRows.map(r => {
-      const isOff = /^off$/i.test(r.shift);
-      return `<tr class="${isOff?'off-row':''}">
-        <td>${esc(r.display)}</td>
-        <td style="color:var(--muted); font-weight:500">${esc(r.dayName)}</td>
-        <td class="shift-cell">${esc(r.shift)}</td>
-        <td>${esc(r.region||'-')}</td>
-        <td style="color:var(--muted)">${esc(r.systemId||'-')}</td>
+    if(tableRows.length === 0){
+       statsGrid.style.display = 'none';
+       document.getElementById('salaryGrid').style.display = 'none';
+       tableSection.style.display = 'none';
+       stateMsg.style.display = 'block';
+       stateMsg.textContent = `No records found for ${agent} in the selected date range.`;
+       return;
+    }
+
+    document.getElementById('resultCount').textContent = `${tableRows.length} entries found`;
+    const tbody = document.getElementById('tbodyAgent');
+    tbody.innerHTML = tableRows.map(r => {
+      const isOff = r.shift.trim().toUpperCase() === 'OFF';
+      const pillClass = isOff ? 'off' : regionPillClass(r.region);
+      return `<tr class="${isOff ? 'off-row' : ''}">
+        <td>${r.display}</td>
+        <td style="color:var(--muted); font-weight:500;">${r.dayName}</td>
+        <td><span class="pill ${pillClass}">${r.shift}</span></td>
+        <td>${r.region || '-'}</td>
+        <td style="color:var(--muted);">${r.systemId || '-'}</td>
       </tr>`;
     }).join('');
+    
     tableSection.style.display = 'block';
-    msg.style.display = 'none';
+    stateMsg.style.display = 'none';
   }
 
-  /* ============ MAIN LOAD ============ */
+  /* ========== MAIN LOAD ========== */
   async function loadAll(){
-    const msgToday = document.getElementById('stateMsgToday');
-    const updEl = document.getElementById('updatedAt');
-    const isFirstLoad = ALL_ROWS.length === 0;
+    const stateMsgToday = document.getElementById('stateMsgToday');
+    const updatedAtEl = document.getElementById('updatedAt');
+    const prevUpdatedText = updatedAtEl.textContent;
 
     try{
       const newRows = await fetchScheduleRows();
-      const changed = isFirstLoad || JSON.stringify(newRows) !== JSON.stringify(ALL_ROWS);
-      ALL_ROWS = newRows;
+      ALL_ROWS = newRows; // Only update global state if fetch succeeds
 
+      // Today View
       renderDateNav();
       renderTodayView();
+
+      // Details View
       populateSelect('fMonth', [...new Set(ALL_ROWS.map(r=>r.month))].filter(Boolean));
       populateSelect('fRegion', [...new Set(ALL_ROWS.map(r=>r.region))].filter(Boolean));
       populateSelect('fShift', [...new Set(ALL_ROWS.map(r=>r.shift))].filter(Boolean).sort());
       renderDetails();
-      populateAgents(!isFirstLoad);
-      if(isFirstLoad) setDefaultDates();
+
+      // Agent View
+      populateAgents();
+      setDefaultDates();
       renderHistory();
 
-      updEl.innerHTML = `<span class="dot"></span>Last updated: ${new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}`;
-      msgToday.classList.remove('error');
-      if(!isFirstLoad && changed) toast('Schedule updated with fresh data');
+      const updated = 'Last updated: ' + new Date().toLocaleString('en-US', {hour:'2-digit', minute:'2-digit', day:'2-digit', month:'short'});
+      updatedAtEl.textContent = updated;
+
+      stateMsgToday.classList.remove('error');
     } catch(err){
-      if(ALL_ROWS.length === 0){
-        msgToday.classList.add('error');
-        msgToday.style.display = 'block';
+      // If refresh fails, retain old data but show a warning in the header
+      if (ALL_ROWS.length === 0) {
+        stateMsgToday.classList.add('error');
+        stateMsgToday.style.display = 'block';
         document.getElementById('groupsHolder').innerHTML = '';
-        document.getElementById('statRow').innerHTML = '';
-        msgToday.textContent = 'Could not load data. Check that the Sheet sharing is set to "Anyone with the link – Viewer".';
-        updEl.textContent = 'Trouble loading data…';
+        stateMsgToday.textContent = 'Could not load data. Check that the Sheet sharing is set to "Anyone with the link – Viewer".';
+        updatedAtEl.textContent = 'Trouble loading data...';
       } else {
-        updEl.textContent = 'Last update failed — showing previous data';
+        updatedAtEl.textContent = 'Last update failed (showing old data)';
       }
-      if(!isFirstLoad) toast('Refresh failed — showing cached data', true);
       console.error(err);
     }
   }
 
-  /* ============ EVENTS ============ */
-  ['fMonth','fRegion','fShift'].forEach(id =>
-    document.getElementById(id).addEventListener('change', renderDetails));
+  /* ========== EVENT BINDINGS ========== */
+  // Details Filters
+  ['fMonth','fRegion','fShift'].forEach(id => document.getElementById(id).addEventListener('change', renderDetails));
   document.getElementById('fAgent').addEventListener('input', renderDetails);
   document.getElementById('clearBtn').addEventListener('click', () => {
-    ['fMonth','fRegion','fShift','fAgent'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('fMonth').value = '';
+    document.getElementById('fRegion').value = '';
+    document.getElementById('fShift').value = '';
+    document.getElementById('fAgent').value = '';
     renderDetails();
   });
 
+  // Agent History Filters
   document.getElementById('agentSelect').addEventListener('change', renderHistory);
   document.getElementById('startDate').addEventListener('change', renderHistory);
   document.getElementById('endDate').addEventListener('change', renderHistory);
+  document.getElementById('kpiSelect').addEventListener('change', renderHistory);
+
+  // Clicking anywhere on a date field opens its calendar picker (not just the icon)
+  document.querySelectorAll('input[type="date"]').forEach(input => {
+    input.addEventListener('click', () => {
+      if(typeof input.showPicker === 'function'){
+        try{ input.showPicker(); }catch(e){ /* ignore if not allowed */ }
+      }
+    });
+  });
   document.getElementById('resetBtn').addEventListener('click', () => {
     document.getElementById('agentSelect').value = '';
+    document.getElementById('kpiSelect').value = '';
     setDefaultDates();
     renderHistory();
   });
 
-  document.querySelectorAll('input[type="date"]').forEach(input => {
-    input.addEventListener('click', () => {
-      if(typeof input.showPicker === 'function'){
-        try{ input.showPicker(); }catch(e){}
-      }
-    });
-  });
-
+  // Initial Load & Auto Refresh
   loadAll();
   setInterval(loadAll, CONFIG.REFRESH_MS);
 </script>
