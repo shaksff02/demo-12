@@ -1038,6 +1038,7 @@
 
   /* ========== SALARY CALCULATION ========== */
   const SALARY_PER_DAY = 490;
+  const KPI_MIN_DUTY_DAYS = 17;
   const KPI_VALUES = { '': 0, A: 2700, B: 2000, C: 700 };
   const KPI_LABELS = { '': 'No category selected', A: 'Category A selected', B: 'Category B selected', C: 'Category C selected' };
 
@@ -1073,20 +1074,25 @@
   }
 
   // Travel allowance rules:
-  //  - Shift ending exactly at 10:00 PM -> 45 tk
-  //  - Shift starting or ending anywhere from 10:01 PM to 5:00 AM -> 115 tk
+  //  - The specific 1:00 PM – 10:00 PM shift -> 45 tk (special case)
+  //  - Any other shift starting or ending between 10:00 PM and 5:00 AM (inclusive) -> 115 tk
   //  - Any other shift -> 0
   function computeTravelAllowance(shiftStr){
     const range = parseShiftRange(shiftStr);
     if(!range) return 0;
     const { startMin, endMin } = range;
-    const NIGHT_START = 22 * 60 + 1; // 10:01 PM
-    const NIGHT_END = 5 * 60;        // 5:00 AM
-    const inNightWindow = (m) => m >= NIGHT_START || m <= NIGHT_END;
+    const ONE_PM = 13 * 60;
+    const TEN_PM = 22 * 60;
+    const FIVE_AM = 5 * 60;
 
-    if(endMin === 22 * 60){ // exactly 10:00 PM end
+    if(startMin === ONE_PM && endMin === TEN_PM){ // 1pm-10pm special case
       return 45;
     }
+
+    const NIGHT_START = TEN_PM;  // 10:00 PM
+    const NIGHT_END = FIVE_AM;   // 5:00 AM
+    const inNightWindow = (m) => m >= NIGHT_START || m <= NIGHT_END;
+
     if(inNightWindow(startMin) || inNightWindow(endMin)){
       return 115;
     }
@@ -1113,14 +1119,25 @@
     });
 
     const dutyPayTotal = dutyDaysWorked * SALARY_PER_DAY;
-    const kpiBonus = KPI_VALUES[kpiCategory] || 0;
+    const kpiEligible = dutyDaysWorked >= KPI_MIN_DUTY_DAYS;
+    const kpiBonus = kpiEligible ? (KPI_VALUES[kpiCategory] || 0) : 0;
     const grandTotal = dutyPayTotal + travelTotal + kpiBonus;
 
     document.getElementById('salaryDutyPay').textContent = fmtTk(dutyPayTotal);
     document.getElementById('salaryDutySub').textContent = `${dutyDaysWorked} days × ৳${SALARY_PER_DAY}`;
     document.getElementById('salaryTravel').textContent = fmtTk(travelTotal);
     document.getElementById('salaryKPI').textContent = fmtTk(kpiBonus);
-    document.getElementById('salaryKPISub').textContent = KPI_LABELS[kpiCategory] || 'No category selected';
+
+    let kpiSub;
+    if(!kpiCategory){
+      kpiSub = 'No category selected';
+    } else if(!kpiEligible){
+      const remaining = KPI_MIN_DUTY_DAYS - dutyDaysWorked;
+      kpiSub = `Needs ${KPI_MIN_DUTY_DAYS}+ duty days (${remaining} more)`;
+    } else {
+      kpiSub = KPI_LABELS[kpiCategory];
+    }
+    document.getElementById('salaryKPISub').textContent = kpiSub;
     document.getElementById('salaryTotal').textContent = fmtTk(grandTotal);
 
     salaryGrid.style.display = 'grid';
