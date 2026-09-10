@@ -220,6 +220,20 @@
     }
     .clear-btn:hover, .reset-btn:hover{ border-color:var(--ink); color:var(--ink); }
 
+    .salary-toggle-btn{
+      background:var(--emerald-dim);
+      border:1px solid var(--emerald);
+      color:var(--emerald);
+      border-radius:20px;
+      padding:8px 16px;
+      font-size:12.5px;
+      font-family:var(--font-body);
+      font-weight:600;
+      cursor:pointer;
+      transition:all .15s ease;
+    }
+    .salary-toggle-btn:hover{ background:var(--emerald); color:#fff; }
+
     .pill{
       display:inline-block;
       padding:4px 12px;
@@ -658,6 +672,10 @@
       <button class="reset-btn" id="resetBtn">Reset Filters</button>
     </div>
 
+    <div id="salaryToggleWrap" style="display:none; margin-bottom:16px;">
+      <button class="salary-toggle-btn" id="toggleSalaryBtn" type="button">💰 Show Salary Summary</button>
+    </div>
+
     <div class="stats-grid" id="salaryGrid" style="display:none;">
       <div class="stat-card success">
         <span class="label">Duty Days Pay</span>
@@ -840,6 +858,7 @@
   /* ========== GLOBAL STATE & DATA ========== */
   let ALL_ROWS = [];
   let SELECTED_SORT_KEY = getSortKeyFromDate(new Date()); // Defaults to today
+  let salaryVisible = false;
 
   /* ========== VIEW SWITCHER ========== */
   document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -1074,25 +1093,21 @@
   }
 
   // Travel allowance rules:
-  //  - The specific 1:00 PM – 10:00 PM shift -> 45 tk (special case)
+  //  - Any shift ending exactly at 10:00 PM -> 45 tk
   //  - Any other shift starting or ending between 10:00 PM and 5:00 AM (inclusive) -> 115 tk
   //  - Any other shift -> 0
   function computeTravelAllowance(shiftStr){
     const range = parseShiftRange(shiftStr);
     if(!range) return 0;
     const { startMin, endMin } = range;
-    const ONE_PM = 13 * 60;
     const TEN_PM = 22 * 60;
     const FIVE_AM = 5 * 60;
 
-    if(startMin === ONE_PM && endMin === TEN_PM){ // 1pm-10pm special case
+    if(endMin === TEN_PM){ // shift ends exactly at 10:00 PM
       return 45;
     }
 
-    const NIGHT_START = TEN_PM;  // 10:00 PM
-    const NIGHT_END = FIVE_AM;   // 5:00 AM
-    const inNightWindow = (m) => m >= NIGHT_START || m <= NIGHT_END;
-
+    const inNightWindow = (m) => m >= TEN_PM || m <= FIVE_AM;
     if(inNightWindow(startMin) || inNightWindow(endMin)){
       return 115;
     }
@@ -1105,6 +1120,8 @@
 
   function renderSalary(filtered){
     const salaryGrid = document.getElementById('salaryGrid');
+    const toggleWrap = document.getElementById('salaryToggleWrap');
+    const toggleBtn = document.getElementById('toggleSalaryBtn');
     const kpiCategory = document.getElementById('kpiSelect').value;
 
     let dutyDaysWorked = 0;
@@ -1140,7 +1157,9 @@
     document.getElementById('salaryKPISub').textContent = kpiSub;
     document.getElementById('salaryTotal').textContent = fmtTk(grandTotal);
 
-    salaryGrid.style.display = 'grid';
+    toggleWrap.style.display = 'block';
+    toggleBtn.textContent = salaryVisible ? '💰 Hide Salary Summary' : '💰 Show Salary Summary';
+    salaryGrid.style.display = salaryVisible ? 'grid' : 'none';
   }
 
   /* ========== AGENT HISTORY VIEW RENDER ========== */
@@ -1181,6 +1200,7 @@
     if(!agent){
       statsGrid.style.display = 'none';
       document.getElementById('salaryGrid').style.display = 'none';
+      document.getElementById('salaryToggleWrap').style.display = 'none';
       tableSection.style.display = 'none';
       stateMsg.style.display = 'block';
       stateMsg.textContent = 'Please select an agent to view their shift history.';
@@ -1276,6 +1296,7 @@
     if(tableRows.length === 0){
        statsGrid.style.display = 'none';
        document.getElementById('salaryGrid').style.display = 'none';
+       document.getElementById('salaryToggleWrap').style.display = 'none';
        tableSection.style.display = 'none';
        stateMsg.style.display = 'block';
        stateMsg.textContent = `No records found for ${agent} in the selected date range.`;
@@ -1361,6 +1382,10 @@
   document.getElementById('startDate').addEventListener('change', renderHistory);
   document.getElementById('endDate').addEventListener('change', renderHistory);
   document.getElementById('kpiSelect').addEventListener('change', renderHistory);
+  document.getElementById('toggleSalaryBtn').addEventListener('click', () => {
+    salaryVisible = !salaryVisible;
+    renderHistory();
+  });
 
   // Clicking anywhere on a date field opens its calendar picker (not just the icon)
   document.querySelectorAll('input[type="date"]').forEach(input => {
@@ -1373,6 +1398,7 @@
   document.getElementById('resetBtn').addEventListener('click', () => {
     document.getElementById('agentSelect').value = '';
     document.getElementById('kpiSelect').value = '';
+    salaryVisible = false;
     setDefaultDates();
     renderHistory();
   });
